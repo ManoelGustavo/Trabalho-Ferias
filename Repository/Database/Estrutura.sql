@@ -39,7 +39,7 @@ CREATE TABLE projetos(
 	FOREIGN KEY(id_cliente) REFERENCES clientes(id),
 	nome VARCHAR(50) NOT NULL,
 	data_criacao DATETIME2(7) NOT NULL,
-	data_finalizacao DATETIME(7) NOT NULL
+	data_finalizacao DATETIME2(7) NOT NULL
 );
 
 CREATE TABLE usuarios(

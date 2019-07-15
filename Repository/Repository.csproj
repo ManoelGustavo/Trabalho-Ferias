@@ -54,7 +54,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{e5b7ff13-a143-483f-a8ef-a6b72781a184}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Estrutura.sql" />
   </ItemGroup>
