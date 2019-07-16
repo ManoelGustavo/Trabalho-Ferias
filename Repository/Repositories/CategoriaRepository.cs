@@ -60,7 +60,7 @@ namespace Repository.Repositories
             busca = ($"%{busca}%");
             return (from categoria 
                     in context.Categorias
-                    where categoria.Nome.Contains(busca)
+                    where categoria.RegistroAtivo == true && (categoria.Nome.Contains(busca))
                     orderby categoria.Nome
                     select categoria).ToList();
         }

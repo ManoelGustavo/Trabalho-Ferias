@@ -62,7 +62,7 @@ namespace Repository.Repositories
             busca = ($"%{busca}%");
             return (from usuario
                     in context.Usuarios
-                    where usuario.Senha.Contains(busca) || usuario.Login.Contains(busca) || usuario.Nome.Contains(busca)
+                    where usuario.RegistroAtivo == true && (usuario.Senha.Contains(busca) || usuario.Login.Contains(busca) || usuario.Nome.Contains(busca))
                     orderby usuario.Login
                     select usuario).ToList();
 

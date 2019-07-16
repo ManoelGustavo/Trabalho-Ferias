@@ -61,7 +61,7 @@ namespace Repository.Repositories
         {
             busca = ($"%{busca}%");
             return (from estado in context.Estados
-                    where estado.Nome.Contains(busca)|| estado.Sigla.Contains(busca)
+                    where estado.RegistroAtivo == true && (estado.Nome.Contains(busca)|| estado.Sigla.Contains(busca))
                     orderby estado.Sigla
                     select estado).ToList();
         }
