@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //Desenvolvido por Matheus Donato
-
 namespace Repository.Repositories
 {
-    class CidadeRepository : ICidadeRepository
+    public class CidadeRepository : ICidadeRepository
     {
         public SistemaContext context;
 

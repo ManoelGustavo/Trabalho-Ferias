@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 //Desenvolvido por Matheus Donato
 namespace Repository.Interfaces
 {
-    interface ICidadeRepository
+    interface IClienteRepository
     {
-        List<Cidade> ObterTodos(string busca);
-        int Inserir(Cidade cidade);
-        bool Alterar(Cidade cidade);
-        Cidade ObterPeloId(int id);
+        List<Cliente> ObterTodos(string busca);
+        int Inserir(Cliente cliente);
+        bool Alterar(Cliente cliente);
+        Cliente ObterPeloId(int id);
         bool Apagar(int id);
     }
 }

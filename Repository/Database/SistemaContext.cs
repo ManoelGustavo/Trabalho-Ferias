@@ -16,6 +16,8 @@ namespace Repository.DataBase
         public DbSet<Usuario> Usuarios { get; set; }
 
         public DbSet<Cidade> Cidades { get; set; }
+
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }
 
