@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\SistemaContext.cs" />
+    <Compile Include="Interfaces\ICategoriaRepository.cs" />
     <Compile Include="Interfaces\IEstadoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EstadoRepository.cs" />
