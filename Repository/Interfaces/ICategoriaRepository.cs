@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//Desenvolvido por Gustavo Manoel
 
 namespace Repository.Interfaces
 {
@@ -11,9 +12,9 @@ namespace Repository.Interfaces
     {
         List<Categoria> ObterTodos(string busca);
 
-        int Inserir(Categoria estado);
+        int Inserir(Categoria categoria);
 
-        bool Alterar(Categoria estado);
+        bool Alterar(Categoria categoria);
 
         Categoria ObterPeloId(int id);
 
