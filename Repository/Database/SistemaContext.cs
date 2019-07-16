@@ -10,7 +10,10 @@ namespace Repository.DataBase
 
         }
         public DbSet<Estado> Estados { get; set; }
+
         public DbSet<Categoria> Categorias { get; set; }
+
+        public DbSet<Categoria> Usuarios { get; set; }
     }
 }
 
