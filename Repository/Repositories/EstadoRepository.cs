@@ -25,8 +25,8 @@ namespace Repository.Repositories
             {
                 return false;
             }
-            estado.Nome = estado.Nome;
-            estado.Sigla = estado.Sigla;
+            estadoOriginal.Nome = estado.Nome;
+            estadoOriginal.Sigla = estado.Sigla;
             context.SaveChanges();
             return true;
         }

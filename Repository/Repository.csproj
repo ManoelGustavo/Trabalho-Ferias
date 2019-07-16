@@ -51,10 +51,12 @@
   <ItemGroup>
     <Compile Include="Database\SistemaContext.cs" />
     <Compile Include="Interfaces\ICategoriaRepository.cs" />
+    <Compile Include="Interfaces\ICidadeRepository.cs" />
     <Compile Include="Interfaces\IEstadoRepository.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoriaRepository.cs" />
+    <Compile Include="Repositories\CidadeRepository.cs" />
     <Compile Include="Repositories\EstadoRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
