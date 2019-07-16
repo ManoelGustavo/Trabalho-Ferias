@@ -44,6 +44,7 @@ namespace Repository.Repositories
 
         public int Inserir(Categoria categoria)
         {
+            categoria.DataCriacao = DateTime.Now;
             context.Categorias.Add(categoria);
             context.SaveChanges();
             return categoria.Id;

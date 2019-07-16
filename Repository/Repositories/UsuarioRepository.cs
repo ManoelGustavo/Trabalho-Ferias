@@ -46,6 +46,7 @@ namespace Repository.Repositories
 
         public int Inserir(Usuario usuario)
         {
+            usuario.DataCriacao = DateTime.Now;
             context.Usuarios.Add(usuario);
             context.SaveChanges();
             return usuario.Id;

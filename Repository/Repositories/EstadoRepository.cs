@@ -46,6 +46,7 @@ namespace Repository.Repositories
 
         public int Inserir(Estado estado)
         {
+            estado.DataCriacao = DateTime.Now;
             context.Estados.Add(estado);
             context.SaveChanges();
             return estado.Id;
