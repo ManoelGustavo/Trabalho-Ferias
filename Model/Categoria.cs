@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 //Desenvolvido por Gustavo Manoel
 namespace Model
 {
-    [Table("estados")]
-    public class Estado : Base
+    [Table("categorias")]
+    public class Categoria : Base
     {
         [Column("nome")]
         public string Nome { get; set; }
-
-        [Column("sigla")]
-        public string Sigla { get; set; }
     }
 }
