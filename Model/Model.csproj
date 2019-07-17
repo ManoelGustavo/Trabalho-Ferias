@@ -55,6 +55,7 @@
     <Compile Include="Estado.cs" />
     <Compile Include="Projeto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tarefa.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
