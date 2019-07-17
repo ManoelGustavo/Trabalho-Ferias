@@ -10,6 +10,12 @@ namespace Model
     [Table("usuarios")]
     public class Usuario : Base
     {
+        public Usuario()
+        {
+            Tarefas = new HashSet<Tarefa>();
+        }
+        public virtual ICollection<Tarefa> Tarefas { get; set; }
+
         [Column("nome")]
         public string Nome { get; set; }
 

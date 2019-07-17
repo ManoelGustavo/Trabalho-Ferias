@@ -10,6 +10,12 @@ namespace Model
     [Table("estados")]
     public class Estado : Base
     {
+        public Estado()
+        {
+            Cidades = new HashSet<Cidade>();
+        }
+        public virtual ICollection<Cidade> Cidades { get; set; }
+
         [Column("nome")]
         public string Nome { get; set; }
 

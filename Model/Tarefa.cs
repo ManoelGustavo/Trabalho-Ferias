@@ -4,23 +4,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//Desenvolvido pro Nathan Micael
+//Desenvolvido por Nathan Micael
 namespace Model
 {
     [Table("tarefas")]
     public class Tarefa : Base
     {
+        [ForeignKey("IdUsuarioResponsavel")]
+        public virtual Usuario Usuario { get; set; }
+
         [Column("id_usuario_responsavel")]
         public int IdUsuarioResponsavel { get; set; }
-        public Usuario Usuario { get; set; }
+
+        [ForeignKey("IdProjeto")]
+        public virtual Projeto Projeto { get; set; }
 
         [Column("id_projeto")]
         public int IdProjeto { get; set; }
-        public Projeto Projeto { get; set; }
+
+        [ForeignKey("IdCategoria")]
+        public virtual Categoria Categoria { get; set; }
 
         [Column("id_categoria")]
         public int IdCategoria { get; set; }
-        public Categoria Categoria { get; set; }
 
         [Column("titulo")]
         public string Titulo { get; set; }

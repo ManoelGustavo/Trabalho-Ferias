@@ -7,7 +7,6 @@ namespace Repository.DataBase
     {
         public SistemaContext() : base("DefaultConnection")
         {
-
         }
         public DbSet<Estado> Estados { get; set; }
 

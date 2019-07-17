@@ -10,9 +10,17 @@ namespace Model
     [Table("clientes")]
     public class Cliente : Base
     {
+        public Cliente()
+        {
+            Projetos = new HashSet<Projeto>();
+        }
+        public virtual ICollection<Projeto> Projetos { get; set; }
+
+        [ForeignKey("IdCidade")]
+        public virtual Cidade Cidade { get; set; }
+
         [Column("id_cidade")]
         public int IdCidade { get; set; }
-        public Cidade Cidade { get; set; }
 
         [Column("nome")]
         public string Nome { get; set; }
