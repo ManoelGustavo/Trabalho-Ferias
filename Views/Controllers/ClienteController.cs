@@ -8,17 +8,17 @@ using System.Web.Mvc;
 // Desenvolvido por Matheus Donato
 namespace Views.Controllers
 {
-    public class CidadeController : Controller
+    public class ClienteController : Controller
     {
-        private CidadeRepository repository;
+        private ClienteRepository repository;
 
-        public CidadeController()
+        public ClienteController()
         {
-            repository = new CidadeRepository();
+            repository = new ClienteRepository();
         }
 
         [HttpGet]
-        // GET: Cidade
+        // GET: Cliente
         public ActionResult Index()
         {
             return View();
@@ -27,16 +27,16 @@ namespace Views.Controllers
         [HttpGet]
         public JsonResult ObterTodos(string busca)
         {
-            List<Cidade> cidades = repository.ObterTodos(busca);
-            return Json(cidades, JsonRequestBehavior.AllowGet);
+            List<Cliente> clientes = repository.ObterTodos(busca);
+            return Json(clientes, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult Store(Cidade cidade)
+        public JsonResult Store(Cliente cliente)
         {
-            cidade.RegistroAtivo = true;
-            repository.Inserir(cidade);
-            return Json(cidade);
+            cliente.RegistroAtivo = true;
+            repository.Inserir(cliente);
+            return Json(cliente);
         }
 
         [HttpGet]
@@ -51,14 +51,14 @@ namespace Views.Controllers
         [Route("obterpeloid/{id}")]
         public JsonResult ObterPeloId(int id)
         {
-            Cidade cidade = repository.ObterPeloId(id);
-            return Json(cidade, JsonRequestBehavior.AllowGet);
+            Cliente cliente = repository.ObterPeloId(id);
+            return Json(cliente, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult Update(Cidade cidade)
+        public JsonResult Update(Cliente cliente)
         {
-            bool alterou = repository.Alterar(cidade);
+            bool alterou = repository.Alterar(cliente);
             return Json(new { status = alterou });
         }
     }
