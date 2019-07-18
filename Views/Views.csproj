@@ -129,7 +129,9 @@
     <Compile Include="Controllers\CidadeController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EstadoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
+    <Compile Include="Controllers\TarefaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,7 +176,9 @@
     <Folder Include="Views\Cidade\" />
     <Folder Include="Views\Cliente\" />
     <Folder Include="Views\Estado\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="Views\Projeto\" />
+    <Folder Include="Views\Tarefa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
