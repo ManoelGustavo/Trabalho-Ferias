@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Categorias</h2>
+
+<button class="btn btn-primary" data-toggle="modal"
+        data-target="#modalCadastroCategoria">
+    <i class="fas fa-plus"></i> Nova Categoria
+</button>
+<div class="row">
+    <div class="col-3 offset-9">
+        <div class="form-group">
+            <input type="text" id="campo-pesquisa"
+                   placeholder="Busca"
+                   class="form-control" />
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+
+        </tr>
+    </tfoot>
+    <tbody id="lista-categorias"></tbody>
+</table>
+
+<div class="modal fade" id="modalCadastroCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="exampleModalLabel">
+                    Cadastro de Categoria
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="campo-nome">
+                                Nome
+                            </label>
+                            <input type="text" id="campo-nome"
+                                   class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"
+                            id="categoria-botao-salvar">
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
