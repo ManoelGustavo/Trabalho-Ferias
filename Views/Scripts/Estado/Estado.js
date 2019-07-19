@@ -4,12 +4,12 @@
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
         $.ajax({
-            url: '/categoria/obterpeloid/' + $id,
+            url: '/estado/obterpeloid/' + $id,
             method: 'get',
             success: function (data) {
                 $id = data.Id;
                 $("#campo-nome").val(data.Nome);
-                $("#modalCadastroCategoria").modal("show");
+                $("#modalCadastroEstado").modal("show");
             }
         })
     });
@@ -21,9 +21,9 @@
     });
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
-        $("#lista-categorias").empty();
+        $("#lista-estados").empty();
         $.ajax({
-            url: '/categoria/obtertodos',
+            url: '/estado/obtertodos',
             method: 'get',
             data: {
                 busca: $busca
@@ -35,6 +35,9 @@
                     var linha = document.createElement("tr");
                     var colunaCodigo = document.createElement("td");
                     colunaCodigo.innerHTML = dado.Id;
+
+                    var colunaSigla = document.createElement("td");
+                    colunaSigla.innerHTML = dado.Sigla
 
                     var colunaNome = document.createElement("td");
                     colunaNome.innerHTML = dado.Nome;
@@ -59,13 +62,13 @@
 
                     linha.appendChild(colunaCodigo);
                     linha.appendChild(colunaNome);
-                    document.getElementById("lista-categorias").appendChild(linha);
+                    document.getElementById("lista-estados").appendChild(linha);
                 }
             },
-        
+
         })
     }
-    $("#categoria-botao-salvar").on("click", function () {
+    $("#estado-botao-salvar").on("click", function () {
         if ($id == -1) {
             inserir();
         } else {
@@ -74,17 +77,18 @@
     });
     function alterar() {
         $nome = $("#campo-nome").val();
+        $nome = $("#campo-Sigla").val();
         $.ajax({
             method: "post",
-            url: "/cadastro/update",
+            url: "/estado/update",
             data: {
                 Nome: $nome,
                 Id: $id
-               
+
             },
             success: function (data) {
                 $id = -1;
-                $("#modalCadastroCategoria").modal("hide");
+                $("#modalCadastroEstado").modal("hide");
                 obterTodos();
                 limparCampos();
             },
@@ -96,6 +100,7 @@
 
     function inserir() {
         $nome = $("#campo-nome").val();
+        $nome = $("#campo-Sigla").val();
         $.ajax({
             method: "post",
             url: "/categoria/store",
@@ -104,7 +109,7 @@
             },
             success: function (data) {
                 $id = -1;
-                $("#modalCadastroCategoria").modal("hide");
+                $("#modalCadastroEstado").modal("hide");
                 obterTodos();
                 limparCampos();
             },
@@ -116,13 +121,13 @@
 
     function limparCampos() {
         $("#campo-nome").val("");
-       
+        $("#campo-sigla").val("");
     }
 
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
         $.ajax({
-            url: '/categoria/apagar/' + $id,
+            url: '/estado/apagar/' + $id,
             method: 'get',
             success: function (data) {
                 obterTodos();

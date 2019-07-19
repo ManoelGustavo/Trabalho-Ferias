@@ -57,6 +57,10 @@ CREATE TABLE categorias(
 	nome VARCHAR(50) NOT NULL
 );
 
+INSERT INTO categorias( nome) VALUES ('Teste')
+
+
+
 CREATE TABLE tarefas(
 	id INT PRIMARY KEY IDENTITY(1,1),
 	id_usuario_responsavel INT NOT NULL,
