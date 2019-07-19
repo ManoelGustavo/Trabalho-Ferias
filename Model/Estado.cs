@@ -12,7 +12,7 @@ namespace Model
     {
         public Estado()
         {
-            Cidades = new HashSet<Cidade>();
+            Cidades = new List<Cidade>();
         }
         public virtual ICollection<Cidade> Cidades { get; set; }
 

@@ -20,7 +20,7 @@ namespace Repository.Repositories
 
         public bool Alterar(Projeto projeto)
         {
-            Projeto projetoOriginal = (from projetos in context.Projetos where projetos.Id == projeto.Id select projetos).FirstOrDefault();
+            Projeto projetoOriginal = context.Projetos.FirstOrDefault(x => x.Id == projeto.Id);
             if (projetoOriginal == null)
             {
                 return false;
@@ -35,7 +35,7 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Projeto projeto = (from projetos in context.Projetos where projetos.Id == id select projetos).FirstOrDefault();
+            Projeto projeto = context.Projetos.FirstOrDefault(x => x.Id == id);
             if (projeto == null)
             {
                 return false;
@@ -55,15 +55,12 @@ namespace Repository.Repositories
 
         public Projeto ObterPeloId(int id)
         {
-            return (from projeto in context.Projetos where projeto.Id == id select projeto).FirstOrDefault();
+            return context.Projetos.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Projeto> ObterTodos(string busca)
         {
-            return (from projeto in context.Projetos
-                    where projeto.RegistroAtivo == true && (projeto.Cliente.Nome.Contains(busca) || projeto.Nome.Contains(busca))
-                    orderby projeto.Nome
-                    select projeto).ToList();
+            return context.Projetos.Where(x => x.RegistroAtivo && x.Cliente.Nome.Contains(busca) || x.Nome.Contains(busca)).OrderBy(x => x.Nome).ToList();
         }
     }
 }

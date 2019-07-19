@@ -20,9 +20,15 @@ namespace Repository.Repositories
 
         public bool Alterar(Tarefa tarefa)
         {
+            // LINQ.
+            /*
             Tarefa tarefaOriginal = (from tarefas in context.Tarefas
                                      where tarefas.Id == tarefa.Id
                                      select tarefas).FirstOrDefault();
+             */
+
+            // Lambda Expression.
+            Tarefa tarefaOriginal = context.Tarefas.FirstOrDefault(x => x.Id == tarefa.Id);
             if(tarefaOriginal == null)
             {
                 return false;
@@ -39,10 +45,8 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Tarefa tarefa = (from tarefas in context.Tarefas
-                                     where tarefas.Id == id
-                                     select tarefas).FirstOrDefault();
-            if(tarefa == null)
+            Tarefa tarefa = context.Tarefas.FirstOrDefault(x => x.Id == id);
+            if (tarefa == null)
             {
                 return false;
             }
@@ -61,17 +65,12 @@ namespace Repository.Repositories
 
         public Tarefa ObterPeloId(int id)
         {
-            return (from tarefa in context.Tarefas
-                    where tarefa.Id == id
-                    select tarefa).FirstOrDefault();
+            return context.Tarefas.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Tarefa> ObterTodos(string busca)
         {
-            return (from tarefa in context.Tarefas
-                    where tarefa.RegistroAtivo == true && (tarefa.Usuario.Nome.Contains(busca))
-                    orderby tarefa.Usuario.Nome
-                    select tarefa).ToList();
+            return context.Tarefas.Where(x => x.RegistroAtivo && x.Usuario.Nome.Contains(busca)).OrderBy(x => x.Usuario.Nome).ToList();
         }
     }
 }

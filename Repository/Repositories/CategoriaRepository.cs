@@ -19,7 +19,7 @@ namespace Repository.Repositories
         }
         public bool Alterar(Categoria categoria)
         {
-            Categoria categoriaOriginal = (from x in context.Categorias where x.Id == categoria.Id select x).FirstOrDefault();
+            Categoria categoriaOriginal = context.Categorias.FirstOrDefault(x => x.Id == categoria.Id);
             if (categoriaOriginal == null)
             {
                 return false;
@@ -31,8 +31,7 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Categoria categoria = (from categorias in context.Categorias where categorias.Id == id select categorias).FirstOrDefault();
-
+            Categoria categoria = context.Categorias.FirstOrDefault(x => x.Id == id);
             if (categoria == null)
             {
                 return false;
@@ -52,17 +51,12 @@ namespace Repository.Repositories
 
         public Categoria ObterPeloId(int id)
         {
-            return (from categoria in context.Categorias where categoria.Id == id select categoria).FirstOrDefault();
+            return context.Categorias.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Categoria> ObterTodos(string busca)
         {
-            busca = ($"%{busca}%");
-            return (from categoria 
-                    in context.Categorias
-                    where categoria.RegistroAtivo == true && (categoria.Nome.Contains(busca))
-                    orderby categoria.Nome
-                    select categoria).ToList();
+            return context.Categorias.Where(x => x.RegistroAtivo && x.Nome.Contains(busca)).OrderBy(x => x.Nome).ToList();
         }
     }
 }

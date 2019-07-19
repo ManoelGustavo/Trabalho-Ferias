@@ -12,7 +12,7 @@ namespace Model
     {
         public Cidade()
         {
-            Clientes = new HashSet<Cliente>();
+            Clientes = new List<Cliente>();
         }
         public virtual ICollection<Cliente> Clientes { get; set; }
 

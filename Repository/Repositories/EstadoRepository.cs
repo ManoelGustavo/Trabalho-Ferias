@@ -20,7 +20,7 @@ namespace Repository.Repositories
 
         public bool Alterar(Estado estado)
         {
-            Estado estadoOriginal = (from x in context.Estados where x.Id == estado.Id select x).FirstOrDefault();
+            Estado estadoOriginal = context.Estados.FirstOrDefault(x => x.Id == estado.Id);
             if (estadoOriginal == null)
             {
                 return false;
@@ -33,8 +33,7 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Estado estado = (from estados in context.Estados where estados.Id == id select estados).FirstOrDefault();
-
+            Estado estado = context.Estados.FirstOrDefault(x => x.Id == id);
             if (estado == null)
             {
                 return false;
@@ -54,16 +53,12 @@ namespace Repository.Repositories
 
         public Estado ObterPeloId(int id)
         {
-            return (from estado in context.Estados where estado.Id == id select estado).FirstOrDefault();
+            return context.Estados.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Estado> ObterTodos(string busca)
         {
-            busca = ($"%{busca}%");
-            return (from estado in context.Estados
-                    where estado.RegistroAtivo == true && (estado.Nome.Contains(busca)|| estado.Sigla.Contains(busca))
-                    orderby estado.Sigla
-                    select estado).ToList();
+            return context.Estados.Where(x => x.RegistroAtivo && x.Nome.Contains(busca) || x.Sigla.Contains(busca)).OrderBy(x => x.Sigla).ToList();
         }
     }
 }

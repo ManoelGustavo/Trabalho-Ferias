@@ -20,7 +20,7 @@ namespace Repository.Repositories
 
         public bool Alterar(Usuario usuario)
         {
-            Usuario usuarioOriginal = (from x in context.Usuarios where x.Id == usuario.Id select x).FirstOrDefault();
+            Usuario usuarioOriginal = context.Usuarios.FirstOrDefault(x => x.Id == usuario.Id);
             if (usuarioOriginal == null)
             {
                 return false;
@@ -33,7 +33,7 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Usuario usuario = (from usuarios in context.Usuarios where usuarios.Id == id select usuarios).FirstOrDefault();
+            Usuario usuario = context.Usuarios.FirstOrDefault(x => x.Id == id);
 
             if (usuario == null)
             {
@@ -54,18 +54,12 @@ namespace Repository.Repositories
 
         public Usuario ObterPeloId(int id)
         {
-            return (from usuario in context.Usuarios where usuario.Id == id select usuario).FirstOrDefault();
+            return context.Usuarios.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Usuario> ObterTodos(string busca)
         {
-            busca = ($"%{busca}%");
-            return (from usuario
-                    in context.Usuarios
-                    where usuario.RegistroAtivo == true && (usuario.Senha.Contains(busca) || usuario.Login.Contains(busca) || usuario.Nome.Contains(busca))
-                    orderby usuario.Login
-                    select usuario).ToList();
-
+            return context.Usuarios.Where(x => x.RegistroAtivo && x.Senha.Contains(busca) || x.Login.Contains(busca) || x.Nome.Contains(busca)).OrderBy(x => x.Login).ToList();
         }
     }
 }

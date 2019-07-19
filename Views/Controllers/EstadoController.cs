@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-// Desenvolvido por Matheus Donato
+
 namespace Views.Controllers
 {
     public class EstadoController : Controller
@@ -32,6 +32,8 @@ namespace Views.Controllers
         }
 
         [HttpPost]
+        // Para teste: [HttpGet]
+        // Para executar: Estado/Store?Nome=Rio de Janeiro&Sigla=RJ
         public JsonResult Store(Estado estado)
         {
             estado.RegistroAtivo = true;
@@ -41,6 +43,7 @@ namespace Views.Controllers
 
         [HttpGet]
         [Route("apagar/{id}")]
+        // Para executar: Estado/Apagar?id=1
         public JsonResult Apagar(int id)
         {
             bool apagou = repository.Apagar(id);

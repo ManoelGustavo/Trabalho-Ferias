@@ -20,7 +20,7 @@ namespace Repository.Repositories
 
         public bool Alterar(Cidade cidade)
         {
-            Cidade cidadeOriginal = (from cidades in context.Cidades where cidades.Id == cidade.Id select cidades).FirstOrDefault();
+            Cidade cidadeOriginal = context.Cidades.FirstOrDefault(x => x.Id == cidade.Id);
             if (cidadeOriginal == null)
             {
                 return false;
@@ -34,7 +34,7 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Cidade cidade = (from cidades in context.Cidades where cidades.Id == id select cidades).FirstOrDefault();
+            Cidade cidade = context.Cidades.FirstOrDefault(x => x.Id == id);
             if (cidade == null)
             {
                 return false;
@@ -54,14 +54,12 @@ namespace Repository.Repositories
 
         public Cidade ObterPeloId(int id)
         {
-            return (from cidade in context.Cidades where cidade.Id == id select cidade).FirstOrDefault();
+            return context.Cidades.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Cidade> ObterTodos(string busca)
         {
-            return (from cidade in context.Cidades
-                    where cidade.RegistroAtivo == true && (cidade.Estado.Nome.Contains(busca) || cidade.Nome.Contains(busca))
-                    orderby cidade.Nome select cidade).ToList();
+            return context.Cidades.Where(x => x.RegistroAtivo && x.Estado.Nome.Contains(busca) || x.Nome.Contains(busca)).OrderBy(x => x.Nome).ToList();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Repository.Repositories
 
         public bool Alterar(Cliente cliente)
         {
-            Cliente clienteOriginal = (from clientes in context.Clientes where clientes.Id == cliente.Id select clientes).FirstOrDefault();
+            Cliente clienteOriginal = context.Clientes.FirstOrDefault(x => x.Id == cliente.Id);
             if (clienteOriginal == null)
             {
                 return false;
@@ -39,7 +39,7 @@ namespace Repository.Repositories
 
         public bool Apagar(int id)
         {
-            Cliente cliente = (from clientes in context.Clientes where clientes.Id == id select clientes).FirstOrDefault();
+            Cliente cliente = context.Clientes.FirstOrDefault(x => x.Id == id);
             if (cliente == null)
             {
                 return false;
@@ -59,14 +59,12 @@ namespace Repository.Repositories
 
         public Cliente ObterPeloId(int id)
         {
-            return (from cliente in context.Clientes where cliente.Id == id select cliente).FirstOrDefault();
+            return context.Clientes.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Cliente> ObterTodos(string busca)
         {
-            return (from cliente in context.Clientes
-                    where cliente.RegistroAtivo == true && (cliente.Cidade.Nome.Contains(busca) || cliente.Nome.Contains(busca) || cliente.Cpf.Contains(busca))
-                    orderby cliente.Nome select cliente).ToList();
+            return context.Clientes.Where(x => x.RegistroAtivo && x.Cidade.Nome.Contains(busca) || x.Nome.Contains(busca) || x.Cpf.Contains(busca)).OrderBy(x => x.Nome).ToList();
         }
     }
 }

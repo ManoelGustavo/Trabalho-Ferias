@@ -12,7 +12,7 @@ namespace Model
     {
         public Cliente()
         {
-            Projetos = new HashSet<Projeto>();
+            Projetos = new List<Projeto>();
         }
         public virtual ICollection<Projeto> Projetos { get; set; }
 

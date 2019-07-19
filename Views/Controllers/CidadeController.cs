@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-// Desenvolvido por Matheus Donato
+
 namespace Views.Controllers
 {
     public class CidadeController : Controller

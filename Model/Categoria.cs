@@ -12,7 +12,7 @@ namespace Model
     {
         public Categoria()
         {
-            Tarefas = new HashSet<Tarefa>();
+            Tarefas = new List<Tarefa>();
         }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
 
