@@ -3,18 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista de Estados</h2>
+<h2 class="text-center">Lista de Estados</h2>
 
-<button class="btn btn-primary" data-toggle="modal"
-        data-target="#modalCadastroEstado">
-    <i class="fas fa-plus"></i> Novo Estado
-</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroEstado"><i class="fas fa-plus"></i> Novo Estado</button>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
-            <input type="text" id="campo-pesquisa"
-                   placeholder="Busca"
-                   class="form-control" />
+            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-control" />
         </div>
     </div>
 </div>
@@ -22,17 +17,17 @@
     <thead>
         <tr>
             <th>Código</th>
-            <th>Sigla</th>
             <th>Nome</th>
-
+            <th>Sigla</th>
+            <th>Ação</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
             <th>Código</th>
-            <th>Sigla</th>
             <th>Nome</th>
-
+            <th>Sigla</th>
+            <th>Ação</th>
         </tr>
     </tfoot>
     <tbody id="lista-Estados"></tbody>
@@ -42,42 +37,27 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"
-                    id="exampleModalLabel">
-                    Cadastro de Estados
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Cadastro de Estados</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="campo-nome">
-                                Nome
-                            </label>
-                            <input type="text" id="campo-nome"
-                                   class="form-control" />
+                            <label for="campo-nome">Nome</label>
+                            <input type="text" id="campo-nome" class="form-control" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="campo-Sigla">
-                                    Sigla
-                                </label>
-                                <input type="text" id="campo-sigla"
-                                       class="form-control" />
+                                <label for="campo-Sigla">Sigla</label>
+                                <input type="text" id="campo-sigla" class="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                                id="categoria-botao-salvar">
-                            <i class="fas fa-save"></i> Salvar
-                        </button>
+                        <button type="button" class="btn btn-success" id="estado-botao-salvar"><i class="fas fa-save"></i> Salvar</button>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ namespace Model
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("data_criação")]
+        [Column("data_criacao")]
         public DateTime DataCriacao { get; set; }
 
         [Column("registro_ativo")]
