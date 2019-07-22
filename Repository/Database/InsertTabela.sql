@@ -19,12 +19,12 @@ INSERT INTO clientes(id_cidade, nome, cpf, data_nascimento, numero, complemento,
 (2, 'Ronaldo', '333.675.897-33', '1988-11-23', 3452, 'Papagaio', 'Rua C', '44061080', '2017-02-14', 1),
 (1, 'Camila', '645.867.087-22', '1999-04-27', 5467, 'Rua Limpo', 'Rua Adão', '44034084', '2017-03-15', 1);
 
-INSERT INTO projetos(id_cliente, nome, data_criacao, data_finalizacao, registro_ativo) VALUES
-(1, 'Projeto Almanaque', '1877-07-17', '1888-08-18', 1),
-(2, 'Projeto Lidoriana', '2000-01-01', '2005-05-05', 1),
-(3, 'Projeto Anarquia', '2017-07-17', '2019-07-29', 1),
-(4, 'Projeto Elden Ring', '2019-12-22', '2021-06-16', 1),
-(5, 'Projeto Hallucinated', '2018-03-13', '2019-05-18', 1);
+INSERT INTO projetos(id_cliente, nome, data_criacao_projeto, data_finalizacao, data_criacao, registro_ativo) VALUES
+(1, 'Projeto Almanaque', '1877-07-17', '1888-08-18', '2019-07-21', 1),
+(2, 'Projeto Lidoriana', '2000-01-01', '2005-05-05', '2019-07-21', 1),
+(3, 'Projeto Anarquia', '2017-07-17', '2019-07-29', '2019-07-21', 1),
+(4, 'Projeto Elden Ring', '2019-12-22', '2021-06-16', '2019-07-21', 1),
+(5, 'Projeto Hallucinated', '2018-03-13', '2019-05-18', '2019-07-21', 1);
 
 INSERT INTO usuarios(nome, login, senha, data_criacao, registro_ativo) VALUES
 ('Lionelds', 'leoniano', '123321', '2019-07-19', 1),

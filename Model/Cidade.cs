@@ -10,10 +10,6 @@ namespace Model
     [Table("cidades")]
     public class Cidade : Base
     {
-        public Cidade()
-        {
-            Clientes = new List<Cliente>();
-        }
         public virtual ICollection<Cliente> Clientes { get; set; }
 
         [ForeignKey("IdEstado")]
@@ -27,6 +23,5 @@ namespace Model
 
         [Column("numero_habitantes")]
         public int NumeroHabitantes { get; set; }
-
     }
 }

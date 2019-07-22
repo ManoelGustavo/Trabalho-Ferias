@@ -59,7 +59,7 @@ namespace Repository.Repositories
 
         public List<Usuario> ObterTodos(string busca)
         {
-            return context.Usuarios.Where(x => x.RegistroAtivo && x.Senha.Contains(busca) || x.Login.Contains(busca) || x.Nome.Contains(busca)).OrderBy(x => x.Login).ToList();
+            return context.Usuarios.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Senha.Contains(busca) || x.Login.Contains(busca) || x.Nome.Contains(busca)))).OrderBy(x => x.Login).ToList();
         }
     }
 }

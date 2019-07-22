@@ -10,10 +10,6 @@ namespace Model
     [Table("projetos")]
     public class Projeto : Base
     {
-        public Projeto()
-        {
-            Tarefas = new List<Tarefa>();
-        }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
 
         [ForeignKey("IdCliente")]
@@ -25,7 +21,7 @@ namespace Model
         [Column("nome")]
         public string Nome { get; set; }
 
-        [Column("data_criacao")]
+        [Column("data_criacao_projeto")]
         public DateTime DataCriacaoProjeto { get; set; }
 
         [Column("data_finalizacao")]

@@ -10,10 +10,6 @@ namespace Model
     [Table("categorias")]
     public class Categoria : Base
     {
-        public Categoria()
-        {
-            Tarefas = new List<Tarefa>();
-        }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
 
         [Column("nome")]

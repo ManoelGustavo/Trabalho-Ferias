@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS categorias;
 DROP TABLE IF EXISTS tarefas;
 
-SELECT * FROM estados;
+SELECT * FROM categorias;
 
 CREATE TABLE estados(
 	id INT PRIMARY KEY IDENTITY(1,1),
@@ -47,8 +47,9 @@ CREATE TABLE projetos(
 	id_cliente INT NOT NULL,
 	FOREIGN KEY(id_cliente) REFERENCES clientes(id),
 	nome VARCHAR(50) NOT NULL,
-	data_criacao DATETIME2(7) NOT NULL,
+	data_criacao_projeto DATETIME2(7) NOT NULL,
 	data_finalizacao DATETIME2(7) NOT NULL,
+	data_criacao DATETIME2(7) NOT NULL,
 	registro_ativo BIT NOT NULL
 );
 

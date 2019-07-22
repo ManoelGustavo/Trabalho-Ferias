@@ -70,7 +70,7 @@ namespace Repository.Repositories
 
         public List<Tarefa> ObterTodos(string busca)
         {
-            return context.Tarefas.Where(x => x.RegistroAtivo && x.Usuario.Nome.Contains(busca)).OrderBy(x => x.Usuario.Nome).ToList();
+            return context.Tarefas.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Usuario.Nome.Contains(busca)))).OrderBy(x => x.Usuario.Nome).ToList();
         }
     }
 }

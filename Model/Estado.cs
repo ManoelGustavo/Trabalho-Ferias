@@ -10,10 +10,6 @@ namespace Model
     [Table("estados")]
     public class Estado : Base
     {
-        public Estado()
-        {
-            Cidades = new List<Cidade>();
-        }
         public virtual ICollection<Cidade> Cidades { get; set; }
 
         [Column("nome")]

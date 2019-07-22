@@ -10,10 +10,6 @@ namespace Model
     [Table("clientes")]
     public class Cliente : Base
     {
-        public Cliente()
-        {
-            Projetos = new List<Projeto>();
-        }
         public virtual ICollection<Projeto> Projetos { get; set; }
 
         [ForeignKey("IdCidade")]

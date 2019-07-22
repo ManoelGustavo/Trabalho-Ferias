@@ -59,7 +59,7 @@ namespace Repository.Repositories
 
         public List<Cidade> ObterTodos(string busca)
         {
-            return context.Cidades.Where(x => x.RegistroAtivo && x.Estado.Nome.Contains(busca) || x.Nome.Contains(busca)).OrderBy(x => x.Nome).ToList();
+            return context.Cidades.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Estado.Nome.Contains(busca) || x.Nome.Contains(busca)))).OrderBy(x => x.Nome).ToList();
         }
     }
 }

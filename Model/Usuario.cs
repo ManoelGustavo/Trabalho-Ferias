@@ -10,10 +10,6 @@ namespace Model
     [Table("usuarios")]
     public class Usuario : Base
     {
-        public Usuario()
-        {
-            Tarefas = new List<Tarefa>();
-        }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
 
         [Column("nome")]

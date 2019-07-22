@@ -56,7 +56,7 @@ namespace Repository.Repositories
 
         public List<Categoria> ObterTodos(string busca)
         {
-            return context.Categorias.Where(x => x.RegistroAtivo && x.Nome.Contains(busca)).OrderBy(x => x.Nome).ToList();
+            return context.Categorias.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Nome.Contains(busca)))).OrderBy(x => x.Nome).ToList();
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿$(function () {
     $id = -1;
-
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
         $.ajax({
@@ -41,17 +40,13 @@
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
-                    botaoEditar.classList.add("btn", "btn-primary", "mr-3"
-                        , "botao-editar");
-                    botaoEditar.innerHTML =
-                        "<i class=\"fas fa-pen\"></i> Editar";
+                    botaoEditar.classList.add("btn", "btn-primary", "mr-3", "botao-editar");
+                    botaoEditar.innerHTML = "<i class=\"fas fa-pen\"></i> Editar";
                     botaoEditar.setAttribute("data-id", dado.Id);
 
                     var botaoApagar = document.createElement("button");
-                    botaoApagar.innerHTML =
-                        "<i class=\"fas fa-trash\"></i> Apagar";
-                    botaoApagar.classList.add("btn", "btn-danger",
-                        "botao-apagar");
+                    botaoApagar.innerHTML = "<i class=\"fas fa-trash\"></i> Apagar";
+                    botaoApagar.classList.add("btn", "btn-danger", "botao-apagar");
                     botaoApagar.setAttribute("data-id", dado.Id);
 
                     colunaAcao.appendChild(botaoEditar);
@@ -76,11 +71,10 @@
         $nome = $("#campo-nome").val();
         $.ajax({
             method: "post",
-            url: "/cadastro/update",
+            url: "/categoria/update",
             data: {
                 Nome: $nome,
                 Id: $id
-               
             },
             success: function (data) {
                 $id = -1;
@@ -100,7 +94,7 @@
             method: "post",
             url: "/categoria/store",
             data: {
-                RazaoSocial: $nome,
+                Nome: $nome
             },
             success: function (data) {
                 $id = -1;
@@ -116,7 +110,6 @@
 
     function limparCampos() {
         $("#campo-nome").val("");
-       
     }
 
     $(".table").on("click", ".botao-apagar", function () {

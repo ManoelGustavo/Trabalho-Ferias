@@ -58,7 +58,7 @@ namespace Repository.Repositories
 
         public List<Estado> ObterTodos(string busca)
         {
-            return context.Estados.Where(x => x.RegistroAtivo && x.Nome.Contains(busca) || x.Sigla.Contains(busca)).OrderBy(x => x.Sigla).ToList();
+            return context.Estados.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Nome.Contains(busca) || x.Sigla.Contains(busca)))).OrderBy(x => x.Sigla).ToList();
         }
     }
 }
