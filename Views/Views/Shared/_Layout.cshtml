@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
 </head>
 <body>
-    @RenderPage("~/Views/Shared/Navbar.cshtml")
-    <div class="container-fluid">
-        @RenderBody()
+    <div>
+
+
+        @RenderPage("~/Views/Shared/Navbar.cshtml")
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
     </div>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/Estado/Estado.js"></script>
     <script src="~/Scripts/Categoria/Categoria.js"></script>
+    <script src="~/Scripts/Usuario/Usuario.js"></script>
 </body>
 </html>
