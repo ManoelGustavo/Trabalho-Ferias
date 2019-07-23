@@ -3,17 +3,17 @@
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
         $.ajax({
-            url: '/estado/obterpeloid/' + $id,
+            url: '/usuario/obterpeloid/' + id,
             method: 'get',
-            success: function (data) {
+            succes: function (data) {
+
                 $id = data.Id;
                 $("#campo-nome").val(data.Nome);
-                $("#campo-sigla").val(data.Sigla)
-                $("#modalCadastroEstado").modal("show");
+                $("#campo-login").val(data.Login);
+                $("#modalCadastroUsuario").modal("show");
             },
         });
     });
-
     $("#campo-pesquisa").on("keyup", function (e) {
         if (e.keyCode == 13) {
             obterTodos();
@@ -23,7 +23,7 @@
         $busca = $("#campo-pesquisa").val();
         $("#lista-estados").empty();
         $.ajax({
-            url: '/estado/obtertodos',
+            url: '/usuario/obtertodos',
             method: 'get',
             data: {
                 busca: $busca
@@ -37,10 +37,10 @@
                     colunaCodigo.innerHTML = dado.Id;
 
                     var colunaNome = document.createElement("td");
-                    colunaNome.innerHTML = dado.Nome;
+                    colunaNome.innerHTML = dado.Nome
 
-                    var colunaSigla = document.createElement("td");
-                    colunaSigla.innerHTML = dado.Sigla;
+                    var colunaNome = document.createElement("td");
+                    colunaNome.innerHTML = dado.Login;
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
@@ -58,15 +58,15 @@
 
                     linha.appendChild(colunaCodigo);
                     linha.appendChild(colunaNome);
-                    linha.appendChild(colunaSigla);
+                    linha.appendChild(colunaLogin);
                     linha.appendChild(colunaAcao);
-                    document.getElementById("lista-estados").appendChild(linha);
+                    document.getElementById("lista-usuarios").appendChild(linha);
                 }
             }
         })
     }
 
-    $("#estado-botao-salvar").on("click", function () {
+    $("#usuario-botao-salvar").on("click", function () {
         if ($id == -1) {
             inserir();
         } else {
@@ -76,18 +76,18 @@
 
     function alterar() {
         $nome = $("#campo-nome").val();
-        $sigla = $("#campo-sigla").val();
+        $sigla = $("#campo-login").val();
         $.ajax({
             method: "post",
-            url: "/estado/update",
+            url: "/usuario/update",
             data: {
                 Nome: $nome,
-                Sigla: $sigla,
+                Login: $login,
                 Id: $id
             },
             success: function (data) {
                 $id = -1;
-                $("#modalCadastroEstado").modal("hide");
+                $("#modalCadastroUsuario").modal("hide");
                 obterTodos();
             },
             error: function (data) {
@@ -95,20 +95,20 @@
             }
         });
     };
-
     function inserir() {
         $nome = $("#campo-nome").val();
-        $sigla = $("#campo-sigla").val();
+        $login = $("#campo-login").val();
+        $senha = $("#campo-senha").val();
         $.ajax({
             method: "post",
-            url: "/estado/store",
+            url: "/usuario/update",
             data: {
                 Nome: $nome,
-                Sigla: $sigla
+                Login: $login,
             },
             success: function (data) {
                 $id = -1;
-                $("#modalCadastroEstado").modal("hide");
+                $("#modalCadastroUsuario").modal("hide");
                 obterTodos();
             },
             error: function (data) {
@@ -116,16 +116,15 @@
             }
         });
     };
-
     function limparCampos() {
-        $("#campo-nome").val("");
-        $("#campo-sigla").val("");
+        $nome = $("#campo-nome").val();
+        $sigla = $("#campo-login").val();
     };
 
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
         $.ajax({
-            url: '/estado/apagar/' + $id,
+            url: '/usuario/apagar/' + $id,
             method: 'get',
             success: function (data) {
                 obterTodos();
@@ -135,5 +134,5 @@
             }
         });
     });
-
- 
+    obterTodos();
+});

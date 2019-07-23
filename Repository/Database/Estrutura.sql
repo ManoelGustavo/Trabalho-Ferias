@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS categorias;
 DROP TABLE IF EXISTS tarefas;
 
-SELECT * FROM categorias;
+
 
 CREATE TABLE estados(
 	id INT PRIMARY KEY IDENTITY(1,1),
