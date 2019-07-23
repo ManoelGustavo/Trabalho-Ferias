@@ -228,11 +228,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Estado\Index.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Cidade\" />
-    <Folder Include="Views\Cliente\" />
     <Folder Include="Views\Projeto\" />
     <Folder Include="Views\Tarefa\" />
     <Folder Include="Views\Usuario\" />
