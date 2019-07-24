@@ -1,4 +1,12 @@
 ﻿-- Desenvolvido por Matheus Donato --
+DROP TABLE IF EXISTS estados;
+DROP TABLE IF EXISTS cidades;
+DROP TABLE IF EXISTS clientes;
+DROP TABLE IF EXISTS projetos;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS categorias;
+DROP TABLE IF EXISTS tarefas;
+
 DELETE FROM estados;
 DELETE FROM cidades;
 DELETE FROM clientes;
@@ -7,7 +15,7 @@ DELETE FROM usuarios;
 DELETE FROM categorias;
 DELETE FROM tarefas;
 
-SELECT * FROM usuarios;
+SELECT * FROM estados;
 
 CREATE TABLE estados(
 	id INT PRIMARY KEY IDENTITY(1,1),

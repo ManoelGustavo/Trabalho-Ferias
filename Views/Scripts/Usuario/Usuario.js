@@ -5,10 +5,11 @@
         $.ajax({
             url: '/usuario/obterpeloid/' + $id,
             method: 'get',
-            succes: function (data) {
+            success: function (data) {
                 $id = data.Id;
                 $("#campo-nome").val(data.Nome);
                 $("#campo-login").val(data.Login);
+                $("#campo-senha").val(data.Senha);
                 $("#modalCadastroUsuario").modal("show");
             },
         });
@@ -21,7 +22,7 @@
     })
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
-        $("#lista-estados").empty();
+        $("#lista-usuarios").empty();
         $.ajax({
             url: '/usuario/obtertodos',
             method: 'get',
@@ -42,6 +43,9 @@
                     var colunaLogin = document.createElement("td");
                     colunaLogin.innerHTML = dado.Login;
 
+                    var colunaSenha = document.createElement("td");
+                    colunaSenha.innerHTML = dado.Senha;
+
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
                     botaoEditar.classList.add("btn", "btn-primary", "mr-3", "botao-editar");
@@ -59,6 +63,7 @@
                     linha.appendChild(colunaCodigo);
                     linha.appendChild(colunaNome);
                     linha.appendChild(colunaLogin);
+                    linha.appendChild(colunaSenha);
                     linha.appendChild(colunaAcao);
                     document.getElementById("lista-usuarios").appendChild(linha);
                 }
@@ -97,6 +102,7 @@
             }
         });
     };
+
     function inserir() {
         $nome = $("#campo-nome").val();
         $login = $("#campo-login").val();
@@ -119,10 +125,11 @@
             }
         });
     };
+
     function limparCampos() {
-        $("#campo-nome").val();
-        $("#campo-login").val();
-        $("#campo-senha").val();
+        $("#campo-nome").val("");
+        $("#campo-login").val("");
+        $("#campo-senha").val("");
     };
 
     $(".table").on("click", ".botao-apagar", function () {
