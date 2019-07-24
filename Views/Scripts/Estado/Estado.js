@@ -8,7 +8,7 @@
             success: function (data) {
                 $id = data.Id;
                 $("#campo-nome").val(data.Nome);
-                $("#campo-sigla").val(data.Sigla)
+                $("#campo-sigla").val(data.Sigla);
                 $("#modalCadastroEstado").modal("show");
             },
         });
@@ -136,4 +136,5 @@
         });
     });
 
- 
+    obterTodos();
+});

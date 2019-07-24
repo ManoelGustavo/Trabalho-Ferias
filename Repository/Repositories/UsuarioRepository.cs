@@ -34,7 +34,6 @@ namespace Repository.Repositories
         public bool Apagar(int id)
         {
             Usuario usuario = context.Usuarios.FirstOrDefault(x => x.Id == id);
-
             if (usuario == null)
             {
                 return false;

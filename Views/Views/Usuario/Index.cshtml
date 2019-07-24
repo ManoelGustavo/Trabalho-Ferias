@@ -1,11 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Usuario";
+    ViewBag.Title = "Index";
 }
 
-
-<h2 class="text-center">Lista de Usuarios</h2>
-
+<h3 class="text-center">Lista de Usuarios</h3>
 <button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroUsuario"><i class="fas fa-plus"></i> Novo Usuario</button>
 <div class="row">
     <div class="col-3 offset-9">
@@ -31,7 +29,7 @@
             <th>Ação</th>
         </tr>
     </tfoot>
-    <tbody id="lista-Usuario"></tbody>
+    <tbody id="lista-usuarios"></tbody>
 </table>
 
 <div class="modal fade" id="modalCadastroUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -52,21 +50,21 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="campo-Login">Login</label>
-                                <input type="text" id="campo-sigla" class="form-control" />
+                                <label for="campo-login">Login</label>
+                                <input type="text" id="campo-login" class="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="campo-Login">Senha</label>
+                                <label for="campo-senha">Senha</label>
                                 <input type="text" id="campo-senha" class="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="estado-botao-salvar"><i class="fas fa-save"></i> Salvar</button>
+                        <button type="button" class="btn btn-success" id="usuario-botao-salvar"><i class="fas fa-save"></i> Salvar</button>
                     </div>
                 </div>
             </div>

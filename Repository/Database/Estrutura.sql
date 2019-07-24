@@ -1,13 +1,13 @@
 ﻿-- Desenvolvido por Matheus Donato --
-DROP TABLE IF EXISTS estados;
-DROP TABLE IF EXISTS cidades;
-DROP TABLE IF EXISTS clientes;
-DROP TABLE IF EXISTS projetos;
-DROP TABLE IF EXISTS usuarios;
-DROP TABLE IF EXISTS categorias;
-DROP TABLE IF EXISTS tarefas;
+DELETE FROM estados;
+DELETE FROM cidades;
+DELETE FROM clientes;
+DELETE FROM projetos;
+DELETE FROM usuarios;
+DELETE FROM categorias;
+DELETE FROM tarefas;
 
-
+SELECT * FROM usuarios;
 
 CREATE TABLE estados(
 	id INT PRIMARY KEY IDENTITY(1,1),
@@ -22,7 +22,7 @@ CREATE TABLE cidades(
 	id_estado INT NOT NULL,
 	FOREIGN KEY(id_estado) REFERENCES estados(id),
 	nome VARCHAR(50) NOT NULL,
-	numero_habitantes INT,
+	numero_habitantes INT NOT NULL,
 	data_criacao DATETIME2(7) NOT NULL,
 	registro_ativo BIT NOT NULL
 );

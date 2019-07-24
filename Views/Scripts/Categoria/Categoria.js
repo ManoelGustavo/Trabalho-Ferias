@@ -9,15 +9,15 @@
                 $id = data.Id;
                 $("#campo-nome").val(data.Nome);
                 $("#modalCadastroCategoria").modal("show");
-            }
-        })
+            },
+        });
     });
 
     $("#campo-pesquisa").on("keyup", function (e) {
         if (e.keyCode == 13) {
             obterTodos();
         }
-    });
+    })
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
         $("#lista-categorias").empty();
@@ -54,12 +54,13 @@
 
                     linha.appendChild(colunaCodigo);
                     linha.appendChild(colunaNome);
+                    linha.appendChild(colunaAcao);
                     document.getElementById("lista-categorias").appendChild(linha);
                 }
-            },
-        
+            }
         })
     }
+
     $("#categoria-botao-salvar").on("click", function () {
         if ($id == -1) {
             inserir();
@@ -86,7 +87,7 @@
                 console.log("ERRO");
             }
         });
-    }
+    };
 
     function inserir() {
         $nome = $("#campo-nome").val();
@@ -106,11 +107,11 @@
                 console.log("ERRO");
             }
         })
-    }
+    };
 
     function limparCampos() {
         $("#campo-nome").val("");
-    }
+    };
 
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
