@@ -231,10 +231,10 @@
     <Content Include="Views\Estado\Index.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cidade\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Cidade\" />
     <Folder Include="Views\Projeto\" />
     <Folder Include="Views\Tarefa\" />
   </ItemGroup>
