@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+<div class="container">
+    <div class="card card-register mx-auto mt-4">
+        <div class="card-header">Editar Cidade</div>
+        <div class="card-body">
+            <form action="@Url.Action("Update")" method="post">
+                <input type="hidden" name="id" value="@ViewBag.Cidade.Id" />
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" id="id" name="id" class="form-control"
+                                       placeholder="Código" required="required"
+                                       value="@ViewBag.Cidade.Id" readonly="readonly" />
+                                <label for="id">Código</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <select id="campo-estado" name="estado" class="form-control" required="required">
+                                    @foreach (Model.Estado estado in ViewBag.Estados)
+                                    {
+                                        if (true)
+                                        {
+                                            <option value="@estado.Id" selected="selected">@estado.Nome</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@estado.Id">@estado.Nome</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="text" id="nome" class="form-control" placeholder="nome" required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cidade.Nome">
+                                <label for="nome">Nome</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12 ">
+                            <div class="form-label-group">
+                                <input type="text" id="campo-nHabitantes" class="form-control nHabitantes" placeholder="nHabitantes" required="required" autofocus="autofocus" name="nHabitantes" maxlength="14" value="@ViewBag.Cidade.NumeroHabitantes">
+                                <label for="campo-nHabitantes">Número de Habitantes</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="@Url.Action("Index", "Cidade")">Deseja alterar alguma Cidade já registrado ?</a>
+            </div>
+        </div>
+    </div>
+</div>
