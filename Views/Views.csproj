@@ -238,6 +238,7 @@
     <Content Include="Views\Cliente\Editar.cshtml" />
     <Content Include="Views\Tarefa\Index.cshtml" />
     <Content Include="Views\Tarefa\Cadastro.cshtml" />
+    <Content Include="Views\Tarefa\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
