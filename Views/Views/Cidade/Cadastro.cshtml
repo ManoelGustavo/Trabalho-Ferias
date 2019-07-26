@@ -4,14 +4,14 @@
 
 <div class="container">
     <div class="card card-register mx-auto mt-4">
-        <div class="card-header">Registro de Cliente</div>
+        <div class="card-header">Registro de Cidade</div>
         <div class="card-body">
             <form action="@Url.Action("Store")" method="post">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-12">
                             <div class="form-label-group">
-                                <input type="text" id="nome" class="form-control" placeholder="nome" required="required" autofocus="autofocus" name="nome">
+                                <input type="text" id="nome" class="form-control" placeholder="nome" required="required" autofocus="autofocus" name="nome" />
                                 <label for="nome">Nome</label>
 
                             </div>
@@ -22,7 +22,7 @@
                             <div class="col-md-12 ">
                                 <div class="form-label-group">
                                     <select id="campo-estado" name="idEstado" class="form-control" required="required">
-                                        <option disabled="disabled" placeholder="cliente id" selected="selected" value="">Selecione o Estado</option>
+                                        <option disabled="disabled" placeholder="estado id" selected="selected" value="">Selecione o Estado</option>
                                         @foreach (Model.Estado estado in ViewBag.Estados)
                                         {
                                             <option value="@estado.Id">@estado.Nome</option>
@@ -42,9 +42,9 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
 
-                    <button class="btn btn-success col-md-12" type="submit">Registrar</button>
+                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="@Url.Action("Index", "Cidade")">Deseja alterar alguma cidade ja cadastrada ?</a>
