@@ -3,13 +3,12 @@
 }
 
 <h2 class="text-center">Lista de Cidades</h2>
-<button class="btn btn-primary" data-toggle="modal" href="@Url.Action("Cadastro", "Cidade")"><i class="fas fa-plus"></i> Nova Categoria</button>
-
-<div class="row">
-    <div class="col-3 offset-9">
-        <div class="form-group">
-            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group" />
-        </div>
+<div>
+    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1"><i class="fa fa-plus"></i> Nova Cidade</a>
+</div>
+<div class="col-3 offset-9">
+    <div class="form-group">
+        <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group" />
     </div>
 </div>
 <table class="table table-striped table-bordered table-hover">
@@ -21,15 +20,14 @@
             <th>Número de Habitantes</th>
             <th>Ação</th>
         </tr>
-
     </thead>
     <tbody>
         @foreach (Model.Cidade cidade in ViewBag.Cidades)
         {
             <tr>
                 <td>@cidade.Id</td>
-                <td>@cidade.Nome</td>
                 <td>@cidade.Estado.Nome</td>
+                <td>@cidade.Nome</td>
                 <td>@cidade.NumeroHabitantes</td>
                 <td>
                     <a href="@Url.Action("Editar", new { id = cidade.Id })" class="btn btn-outline-primary"><i class="fas fa-pen"></i> Editar</a>

@@ -15,7 +15,7 @@ DELETE FROM usuarios;
 DELETE FROM categorias;
 DELETE FROM tarefas;
 
-SELECT * FROM estados;
+SELECT * FROM cidades;
 
 CREATE TABLE estados(
 	id INT PRIMARY KEY IDENTITY(1,1),

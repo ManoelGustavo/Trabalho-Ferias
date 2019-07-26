@@ -24,10 +24,10 @@
                     <div class="form-row">
                         <div class="col-md-12">
                             <div class="form-label-group">
-                                <select id="campo-estado" name="estado" class="form-control" required="required">
+                                <select id="campo-estado" name="idEstado" class="form-control" required="required">
                                     @foreach (Model.Estado estado in ViewBag.Estados)
                                     {
-                                        if (true)
+                                        if (estado.Id == ViewBag.Cidade.IdEstado)
                                         {
                                             <option value="@estado.Id" selected="selected">@estado.Nome</option>
                                         }
@@ -45,8 +45,7 @@
                     <div class="form-row">
                         <div class="col-md-12">
                             <div class="form-label-group">
-                                <input type="text" id="nome" class="form-control" placeholder="nome" required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cidade.Nome">
-                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" class="form-control" placeholder="Nome" required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cidade.Nome">
                             </div>
                         </div>
                     </div>
@@ -55,8 +54,7 @@
                     <div class="form-row">
                         <div class="col-md-12 ">
                             <div class="form-label-group">
-                                <input type="text" id="campo-nHabitantes" class="form-control nHabitantes" placeholder="nHabitantes" required="required" autofocus="autofocus" name="nHabitantes" maxlength="14" value="@ViewBag.Cidade.NumeroHabitantes">
-                                <label for="campo-nHabitantes">Número de Habitantes</label>
+                                <input type="number" id="campo-numero-habitantes" class="form-control" placeholder="Número de Habitantes" required="required" autofocus="autofocus" name="numeroHabitantes" value="@ViewBag.Cidade.NumeroHabitantes">
                             </div>
                         </div>
                     </div>
