@@ -234,6 +234,8 @@
     <Content Include="Views\Cidade\Index.cshtml" />
     <Content Include="Views\Cidade\Cadastro.cshtml" />
     <Content Include="Views\Cidade\Editar.cshtml" />
+    <Content Include="Views\Cliente\Cadastro.cshtml" />
+    <Content Include="Views\Cliente\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

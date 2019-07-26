@@ -1,24 +1,37 @@
 ﻿@{
-    ViewBag.Title = "Cadastro";
+    ViewBag.Title = "Editar";
 }
-
- <div class="container">
+<div class="container">
     <div class="card card-register mx-auto mt-4">
-        <div class="card-header">Registro de Cliente</div>
-        <div class="card-body">            
-            <form action="@Url.Action("Store")" method="post">
+        <div class="card-header">Editar Cliente</div>
+        <div class="card-body">
+            <form action="@Url.Action("Update")" method="post">
+                <input type="hidden" name="id" value="@ViewBag.Cliente.Id" />
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="text" id="id" name="id" class="form-control"
+                                       placeholder="Código" required="required"
+                                       value="@ViewBag.Cliente.Id" readonly="readonly" />
+                                <label for="id">Código</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="text" id="nome" class="form-control" placeholder="Nome" required="required" autofocus="autofocus" name="nome" />
+                                <input type="text" id="nome" class="form-control" placeholder="Nome"
+                                       required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cliente.Nome" />
                                 <label for="nome">Nome</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-label-group">
                                 <input type="text" id="cpf" class="form-control" placeholder="Cpf"
-                                       required="required" autofocus="autofocus" name="cpf" />
+                                       required="required" autofocus="autofocus" name="cpf" value="@ViewBag.Cliente.Cpf" />
                                 <label for="cpf">Cpf</label>
                             </div>
                         </div>
@@ -28,14 +41,14 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <input type="date" id="data-nascimento" class="form-control" placeholder="Data Nascimento"
-                                           required="required" autofocus="autofocus" name="data_nascimento" />
+                                           required="required" autofocus="autofocus" name="data_nascimento" value="@ViewBag.Cliente.DataNascimento" />
                                     <label for="data-nascimento">Data Nascimento</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="cep" class="form-control" placeholder="Cep"
-                                           required="required" autofocus="autofocus" name="cep" />
+                                    <input type="text" id="cep" class="form-control" placeholder="Cep" required="required"
+                                           autofocus="autofocus" name="cep" value="@ViewBag.Cliente.Cep" />
                                     <label for="cep">Cep</label>
                                 </div>
                             </div>
@@ -45,11 +58,17 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <select id="campo-cidade" name="idCidade" class="form-control" required="required">
-                                        <option disabled="disabled" placeholder="cidade id" selected="selected" value="">Selecione uma Cidade</option>
+                                    <select id="campo-cidade" name="cidade" class="form-control" required="required">
                                         @foreach (Model.Cidade cidade in ViewBag.Cidades)
                                         {
-                                            <option value="@cidade.Id">@cidade.Nome</option>
+                                            if (true)
+                                            {
+                                                <option value="@cidade.Id" selected="selected">@cidade.Nome</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@cidade.Id">@cidade.Nome</option>
+                                            }
                                         }
                                     </select>
                                 </div>
@@ -57,7 +76,7 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <input type="number" id="numero" class="form-control" placeholder="Número"
-                                           required="required" autofocus="autofocus" name="numero" />
+                                           required="required" autofocus="autofocus" name="numero" value="@ViewBag.Cliente.Numero" />
                                     <label for="numero">Número</label>
                                 </div>
                             </div>
@@ -68,24 +87,24 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <input type="text" id="complemento" class="form-control" placeholder="Complemento"
-                                           required="required" autofocus="autofocus" name="complemento" />
+                                           required="required" autofocus="autofocus" name="complemento" value="@ViewBag.Cliente.Complemento" />
                                     <label for="complemento">Complemento</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <input type="text" id="logradouro" class="form-control" placeholder="Logradouro"
-                                           required="required" autofocus="autofocus" name="logradouro" />
+                                           required="required" autofocus="autofocus" name="logradouro" value="ViewBag.Cliente.Logradouro" />
                                     <label for="logradouro">Logradouro</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success col-md-12" type="submit">Registrar</button>                
+                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="@Url.Action("Index", "Cliente")">Deseja alterar algum cliente já cadastrado ?</a>
+                <a class="d-block small mt-3" href="@Url.Action("Index", "Cliente")">Deseja alterar algum cliente já registrado ?</a>
             </div>
         </div>
     </div>
