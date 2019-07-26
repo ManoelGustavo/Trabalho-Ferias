@@ -240,6 +240,7 @@
     <Content Include="Views\Tarefa\Cadastro.cshtml" />
     <Content Include="Views\Tarefa\Editar.cshtml" />
     <Content Include="Views\Projeto\Index.cshtml" />
+    <Content Include="Views\Projeto\Cadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
