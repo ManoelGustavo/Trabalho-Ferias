@@ -239,10 +239,10 @@
     <Content Include="Views\Tarefa\Index.cshtml" />
     <Content Include="Views\Tarefa\Cadastro.cshtml" />
     <Content Include="Views\Tarefa\Editar.cshtml" />
+    <Content Include="Views\Projeto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Projeto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
