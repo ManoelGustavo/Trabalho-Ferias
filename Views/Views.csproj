@@ -234,11 +234,17 @@
     <Content Include="Views\Cidade\Index.cshtml" />
     <Content Include="Views\Cidade\Cadastro.cshtml" />
     <Content Include="Views\Cidade\Editar.cshtml" />
+    <Content Include="Views\Cliente\Cadastro.cshtml" />
+    <Content Include="Views\Cliente\Editar.cshtml" />
+    <Content Include="Views\Tarefa\Index.cshtml" />
+    <Content Include="Views\Tarefa\Cadastro.cshtml" />
+    <Content Include="Views\Tarefa\Editar.cshtml" />
+    <Content Include="Views\Projeto\Index.cshtml" />
+    <Content Include="Views\Projeto\Cadastro.cshtml" />
+    <Content Include="Views\Projeto\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Projeto\" />
-    <Folder Include="Views\Tarefa\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Editar";
+}
+
+<div class="container">
+    <div class="card card-register mx-auto mt-4">
+        <div class="card-header">Editar Tarefa</div>
+        <div class="card-body">
+            <form action="@Url.Action("Update")" method="post">
+                <input type="hidden" name="id" value="@ViewBag.Tarefa.Id" />
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="text" id="id" name="id" class="form-control"
+                                       placeholder="Código" required="required"
+                                       value="@ViewBag.Tarefa.Id" readonly="readonly" />
+                                <label for="id">Código</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <select id="campo-usuario" name="usuario" class="form-control" required="required">
+                                    @foreach (Model.Usuario usuario in ViewBag.Usuarios)
+                                    {
+                                        if (true)
+                                        {
+                                            <option value="@usuario.Id" selected="selected">@usuario.Nome</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@usuario.Id">@usuario.Nome</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <select id="campo-projeto" name="projeto" class="form-control" required="required">
+                                    @foreach (Model.Projeto projeto in ViewBag.Projetos)
+                                    {
+                                        if (true)
+                                        {
+                                            <option value="@projeto.Id" selected="selected">@projeto.Nome</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@projeto.Id">@projeto.Nome</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <select id="campo-categoria" name="categoria" class="form-control" required="required">
+                                        @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                                        {
+                                            if (true)
+                                            {
+                                                <option value="@categoria.Id" selected="selected">@categoria.Nome</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@categoria.Id">@categoria.Nome</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="text" id="titulo" class="form-control" required="required"
+                                           placeholder="Título" autofocus="autofocus" name="titulo" value="@ViewBag.Tarefa.Titulo" />
+                                    <label for="titulo">Título</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <textarea cols="25" rows="3" id="descricao" class="form-control" placeholder="Descrição"
+                                              required="required" autofocus="autofocus" name="descricao">@ViewBag.Tarefa.Descricao</textarea>
+                                    <label for="descricao">Descrição</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="datetime" id="duracao" class="form-control" placeholder="Duração"
+                                           required="required" autofocus="autofocus" name="duracao" value="@ViewBag.Tarefa.Duracao" />
+                                    <label for="duracao">Duração</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="@Url.Action("Index", "Tarefa")">Deseja alterar alguma tarefa já registrada ?</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Lista de Tarefas</h2>
+<button class="btn btn-primary" data-toggle="modal" href="@Url.Action("Cadastro","Tarefa")"><i class="fas fa-plus"></i> Nova Tarefa</button>
+
+<div class="row">
+    <div class="col-3 offset-9">
+        <div class="form-group">
+            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group" />
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Responsável</th>
+            <th>Projeto</th>
+            <th>Categoria</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Duração</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Model.Tarefa tarefa in ViewBag.Tarefas)
+        {
+            <tr>
+                <td>@tarefa.Id</td>
+                <td>@tarefa.Usuario.Nome</td>
+                <td>@tarefa.Projeto.Nome</td>
+                <td>@tarefa.Categoria.Nome</td>
+                <td>@tarefa.Titulo</td>
+                <td>@tarefa.Descricao</td>
+                <td>@tarefa.Duracao</td>
+                <td>
+                    <a href="@Url.Action("Editar", new { id = tarefa.Id })" class="btn btn-primary">
+                    <i class="fas fa-pen"></i> Editar</a>
+
+                    <a href="@Url.Action("Apagar", new { id = tarefa.Id })" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Código</th>
+            <th>Responsável</th>
+            <th>Projeto</th>
+            <th>Categoria</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Duração</th>
+            <th>Ação</th>
+        </tr>
+    </tfoot>
+</table>

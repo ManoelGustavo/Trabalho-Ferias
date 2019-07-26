@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+}
+
+<div class="container">
+    <div class="card card-register mx-auto mt-4">
+        <div class="card-header">Registro de Tarefa</div>
+        <div class="card-body">
+            <form action="@Url.Action("Store")" method="post">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <select id="campo-usuario" name="usuario" class="form-control" required="required">
+                                    <option disabled="disabled" placeholder="Usuário" selected="selected">Selecione o Usuário Responsável</option>
+                                    @foreach (Model.Usuario usuario in ViewBag.Usuarios)
+                                    {
+                                        <option value="@usuario.Id">@usuario.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <select id="campo-projeto" name="projeto" class="form-control" required="required">
+                                    <option disabled="disabled" placeholder="Projeto" selected="selected">Selecione um Projeto</option>
+                                    @foreach (Model.Projeto projeto in ViewBag.Projetos)
+                                    {
+                                        <option value="@projeto.Id">@projeto.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <select id="campo-categoria" name="categoria" class="form-control" required="required">
+                                        <option disabled="disabled" placeholder="Categoria" selected="selected">Selecione uma Categoria</option>
+                                        @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                                        {
+                                            <option value="@categoria.Id">@categoria.Nome</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="text" id="titulo" class="form-control" required="required"
+                                           placeholder="Título" autofocus="autofocus" name="titulo" />
+                                    <label for="titulo">Título</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <textarea cols="25" rows="3" id="descricao" class="form-control" placeholder="Descrição"
+                                              required="required" autofocus="autofocus" name="descricao"></textarea>
+                                    <label for="descricao">Descrição</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="datetime" id="duracao" class="form-control" placeholder="Duração"
+                                           required="required" autofocus="autofocus" name="duracao" />
+                                    <label for="duracao">Duração</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="@Url.Action("Index", "Tarefa")">Deseja alterar alguma tarefa já cadastrada ?</a>
+            </div>
+        </div>
+    </div>
+</div>

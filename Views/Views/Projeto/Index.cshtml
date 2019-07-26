@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Lista de Projetos</h2>
+<button class="btn btn-primary" data-toggle="modal" href="@Url.Action("Cadastro","Projeto")"><i class="fas fa-plus"></i> Novo Projeto</button>
+
+<div class="row">
+    <div class="col-3 offset-9">
+        <div class="form-group">
+            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group" />
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Cliente</th>
+            <th>Nome Projeto</th>
+            <th>Data de Criaçõa</th>
+            <th>Data de Finalização</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Model.Projeto projeto in ViewBag.Projetos)
+        {
+            <tr>
+                <td>@projeto.Id</td>
+                <td>@projeto.Cliente.Nome</td>
+                <td>@projeto.Nome</td>
+                <td>@projeto.DataCriacaoProjeto</td>
+                <td>@projeto.DataFinalizacao</td>
+                <td>
+                    <a href="@Url.Action("Editar", new { id = projeto.Id })" class="btn btn-primary">
+                        <i class="fas fa-pen"></i> Editar
+                    </a>
+
+                    <a href="@Url.Action("Apagar", new { id = projeto.Id })" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Apagar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Código</th>
+            <th>Cliente</th>
+            <th>Nome Projeto</th>
+            <th>Data de Criaçõa</th>
+            <th>Data de Finalização</th>
+            <th>Ação</th>
+        </tr>
+    </tfoot>
+</table>
