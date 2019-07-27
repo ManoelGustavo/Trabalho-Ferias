@@ -17,49 +17,79 @@ namespace Views.Controllers
             repository = new TarefaRepository();
         }
 
-        [HttpGet]
-        // GET: Tarefa
         public ActionResult Index()
         {
+            List<Tarefa> tarefas = repository.ObterTodos("");
+            ViewBag.Tarefas = tarefas;
             return View();
         }
 
-        [HttpGet]
-        public JsonResult ObterTodos(string busca)
+        public ActionResult Cadastro()
         {
-            List<Tarefa> tarefas = repository.ObterTodos(busca);
-            return Json(tarefas, JsonRequestBehavior.AllowGet);
+            ProjetoRepository projetoRepository = new ProjetoRepository();
+            List<Projeto> projetos = projetoRepository.ObterTodos("");
+            ViewBag.Projetos = projetos;
+
+            UsuarioRepository usuarioRepository = new UsuarioRepository();
+            List<Usuario> usuarios = usuarioRepository.ObterTodos("");
+            ViewBag.Usuarios = usuarios;
+
+            CategoriaRepository categoriaRepository = new CategoriaRepository();
+            List<Categoria> categorias = categoriaRepository.ObterTodos("");
+            ViewBag.Categorias = categorias;
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult Store(Tarefa tarefa)
+        public ActionResult Store(int idUsuarioResponsavel, int idProjeto, int idCategoria, string titulo, string descricao, DateTime duracao)
         {
-            tarefa.RegistroAtivo = true;
+            Tarefa tarefa = new Tarefa();
+            tarefa.IdUsuarioResponsavel = idUsuarioResponsavel;
+            tarefa.IdProjeto = idProjeto;
+            tarefa.IdCategoria = idCategoria;
+            tarefa.Titulo = titulo;
+            tarefa.Descricao = descricao;
+            tarefa.Duracao = duracao.Date;
             repository.Inserir(tarefa);
-            return Json(tarefa);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("apagar/{id}")]
-        public JsonResult Apagar(int id)
+        public ActionResult Apagar(int id)
         {
-            bool apagou = repository.Apagar(id);
-            return Json(new { status = apagou }, JsonRequestBehavior.AllowGet);
+            repository.Apagar(id);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("obterpeloid/{id}")]
-        public JsonResult ObterPeloId(int id)
+        public ActionResult Editar(int id)
         {
             Tarefa tarefa = repository.ObterPeloId(id);
-            return Json(tarefa, JsonRequestBehavior.AllowGet);
+            ViewBag.Tarefa = tarefa;
+
+            ProjetoRepository projetoRepository = new ProjetoRepository();
+            List<Projeto> projetos = projetoRepository.ObterTodos("");
+            ViewBag.Projetos = projetos;
+
+            UsuarioRepository usuarioRepository = new UsuarioRepository();
+            List<Usuario> usuarios = usuarioRepository.ObterTodos("");
+            ViewBag.Usuarios = usuarios;
+
+            CategoriaRepository categoriaRepository = new CategoriaRepository();
+            List<Categoria> categorias = categoriaRepository.ObterTodos("");
+            ViewBag.Categorias = categorias;
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult Update(Tarefa tarefa)
+        public ActionResult Update(int id, int idUsuarioResponsavel, int idProjeto, int idCategoria, string titulo, string descricao, DateTime duracao)
         {
-            bool alterou = repository.Alterar(tarefa);
-            return Json(new { status = alterou });
+            Tarefa tarefa = new Tarefa();
+            tarefa.Id = id;
+            tarefa.IdUsuarioResponsavel = idUsuarioResponsavel;
+            tarefa.IdProjeto = idProjeto;
+            tarefa.IdCategoria = idCategoria;
+            tarefa.Titulo = titulo;
+            tarefa.Descricao = descricao;
+            tarefa.Duracao = duracao;
+            repository.Alterar(tarefa);
+            return RedirectToAction("Index");
         }
     }
 }

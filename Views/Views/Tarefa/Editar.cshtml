@@ -12,10 +12,10 @@
                     <div class="form-row">
                         <div class="col-md-12">
                             <div class="form-label-group">
+                                <label for="id">Código</label>
                                 <input type="text" id="id" name="id" class="form-control"
                                        placeholder="Código" required="required"
                                        value="@ViewBag.Tarefa.Id" readonly="readonly" />
-                                <label for="id">Código</label>
                             </div>
                         </div>
                     </div>
@@ -24,10 +24,11 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <select id="campo-usuario" name="usuario" class="form-control" required="required">
+                                <label for="campo-usuario">Usuario</label>
+                                <select id="campo-usuario" name="idUsuarioResponsavel" class="form-control" required="required">
                                     @foreach (Model.Usuario usuario in ViewBag.Usuarios)
                                     {
-                                        if (true)
+                                        if (usuario.Id == ViewBag.Tarefa.IdUsuarioResponsavel)
                                         {
                                             <option value="@usuario.Id" selected="selected">@usuario.Nome</option>
                                         }
@@ -41,10 +42,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <select id="campo-projeto" name="projeto" class="form-control" required="required">
+                                <label for="campo-projeto">Projeto</label>
+                                <select id="campo-projeto" name="idProjeto" class="form-control" required="required">
                                     @foreach (Model.Projeto projeto in ViewBag.Projetos)
                                     {
-                                        if (true)
+                                        if (projeto.Id == ViewBag.Tarefa.IdProjeto)
                                         {
                                             <option value="@projeto.Id" selected="selected">@projeto.Nome</option>
                                         }
@@ -61,10 +63,11 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <select id="campo-categoria" name="categoria" class="form-control" required="required">
+                                    <label for="campo-categoria">Categoria</label>
+                                    <select id="campo-categoria" name="idCategoria" class="form-control" required="required">
                                         @foreach (Model.Categoria categoria in ViewBag.Categorias)
                                         {
-                                            if (true)
+                                            if (categoria.Id == ViewBag.Tarefa.IdCategoria)
                                             {
                                                 <option value="@categoria.Id" selected="selected">@categoria.Nome</option>
                                             }
@@ -78,9 +81,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="titulo" class="form-control" required="required"
+                                    <label for="campo-titulo">Título</label>
+                                    <input type="text" id="campo-titulo" class="form-control" required="required"
                                            placeholder="Título" autofocus="autofocus" name="titulo" value="@ViewBag.Tarefa.Titulo" />
-                                    <label for="titulo">Título</label>
                                 </div>
                             </div>
                         </div>
@@ -89,16 +92,16 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <textarea cols="25" rows="3" id="descricao" class="form-control" placeholder="Descrição"
+                                    <label for="campo-descricao">Descrição</label>
+                                    <textarea cols="25" rows="3" id="campo-descricao" class="form-control" placeholder="Descrição"
                                               required="required" autofocus="autofocus" name="descricao">@ViewBag.Tarefa.Descricao</textarea>
-                                    <label for="descricao">Descrição</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="datetime" id="duracao" class="form-control" placeholder="Duração"
+                                    <label for="campo-duracao">Duração</label>
+                                    <input type="datetime" id="campo-duracao" class="form-control" placeholder="Duração"
                                            required="required" autofocus="autofocus" name="duracao" value="@ViewBag.Tarefa.Duracao" />
-                                    <label for="duracao">Duração</label>
                                 </div>
                             </div>
                         </div>
