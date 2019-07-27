@@ -12,10 +12,10 @@
                     <div class="form-row">
                         <div class="col-md-12">
                             <div class="form-label-group">
+                                <label for="id">Código</label>
                                 <input type="text" id="id" name="id" class="form-control"
                                        placeholder="Código" required="required"
                                        value="@ViewBag.Projeto.Id" readonly="readonly" />
-                                <label for="id">Código</label>
                             </div>
                         </div>
                     </div>
@@ -24,10 +24,11 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <select id="campo-cliente" name="cliente" class="form-control" required="required">
+                                <label for="campo-cliente">Cliente</label>
+                                <select id="campo-cliente" name="idCliente" class="form-control" required="required">
                                     @foreach (Model.Cliente cliente in ViewBag.Clientes)
                                     {
-                                        if (true)
+                                        if (cliente.Id == ViewBag.Projeto.IdCliente)
                                         {
                                             <option value="@cliente.Id" selected="selected">@cliente.Nome</option>
                                         }
@@ -41,9 +42,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="text" id="nome" class="form-control" required="required"
+                                <label for="campo-nome">Nome</label>
+                                <input type="text" id="campo-nome" class="form-control" required="required"
                                        placeholder="Nome" autofocus="autofocus" name="nome" value="@ViewBag.Projeto.Nome" />
-                                <label for="nome">Nome</label>
                             </div>
                         </div>
                     </div>
@@ -51,16 +52,16 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="date" id="data-criacao" class="form-control" required="required"
-                                           placeholder="Data Criação" autofocus="autofocus" name="data_criacao" value="@ViewBag.Projeto.DataCriacaoProjeto" />
-                                    <label for="data-criacao">Data Criação</label>
+                                    <label for="campo-data-criacao">Data Criação</label>
+                                    <input type="date" id="campo-data-criacao" class="form-control" required="required"
+                                           autofocus="autofocus" name="dataCriacaoProjeto" value="@ViewBag.Projeto.DataCriacaoProjeto.ToString("yyyy-MM-dd")" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="date" id="data-finalizacao" class="form-control" required="required"
-                                           placeholder="Data Finalização" autofocus="autofocus" name="data_finalizacao" value="@ViewBag.Projeto.DataFinalizacao" />
-                                    <label for="data-finalizacao">Data Finalização</label>
+                                    <label for="campo-data-finalizacao">Data Finalização</label>
+                                    <input type="date" id="campo-data-finalizacao" class="form-control" required="required"
+                                           autofocus="autofocus" name="dataFinalizacao" value="@ViewBag.Projeto.DataFinalizacao.ToString("yyyy-MM-dd")" />
                                 </div>
                             </div>
                         </div>

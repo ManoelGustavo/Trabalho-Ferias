@@ -17,7 +17,6 @@ namespace Views.Controllers
             repository = new ProjetoRepository();
         }
 
-        [HttpGet]
         // GET: Projeto
         public ActionResult Index()
         {
@@ -30,16 +29,17 @@ namespace Views.Controllers
         {
             ClienteRepository clienteRepository = new ClienteRepository();
             List<Cliente> clientes = clienteRepository.ObterTodos("");
+            ViewBag.Clientes = clientes;
             return View();
         }
 
-        public ActionResult Store(int idCliente, string nome, DateTime data_criacao_projeto, DateTime data_finalizacao)
+        public ActionResult Store(int idCliente, string nome, DateTime dataCriacaoProjeto, DateTime dataFinalizacao)
         {
             Projeto projeto = new Projeto();
             projeto.IdCliente = idCliente;
             projeto.Nome = nome;
-            projeto.DataCriacaoProjeto = data_criacao_projeto;
-            projeto.DataFinalizacao = data_finalizacao;
+            projeto.DataCriacaoProjeto = dataCriacaoProjeto;
+            projeto.DataFinalizacao = dataFinalizacao;
             repository.Inserir(projeto);
             return RedirectToAction("Index");
         }
@@ -61,14 +61,14 @@ namespace Views.Controllers
             return View();
         }
 
-        public ActionResult Update(int idCliente, string nome, DateTime data_criacao_projeto, DateTime data_finalizacao, int id)
+        public ActionResult Update(int idCliente, string nome, DateTime dataCriacaoProjeto, DateTime dataFinalizacao, int id)
         {
             Projeto projeto = new Projeto();
             projeto.Id = id;
             projeto.IdCliente = idCliente;
             projeto.Nome = nome;
-            projeto.DataCriacaoProjeto = data_criacao_projeto;
-            projeto.DataFinalizacao = data_finalizacao;
+            projeto.DataCriacaoProjeto = dataCriacaoProjeto;
+            projeto.DataFinalizacao = dataFinalizacao;
             repository.Alterar(projeto);
             return RedirectToAction("Index");
         }

@@ -3,8 +3,9 @@
 }
 
 <h2 class="text-center">Lista de Projetos</h2>
-<button class="btn btn-primary" data-toggle="modal" href="@Url.Action("Cadastro","Projeto")"><i class="fas fa-plus"></i> Novo Projeto</button>
-
+<div>
+    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1"><i class="fa fa-plus"></i> Novo Projeto</a>
+</div>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
@@ -30,8 +31,8 @@
                 <td>@projeto.Id</td>
                 <td>@projeto.Cliente.Nome</td>
                 <td>@projeto.Nome</td>
-                <td>@projeto.DataCriacaoProjeto</td>
-                <td>@projeto.DataFinalizacao</td>
+                <td>@projeto.DataCriacaoProjeto.ToString("dd/MM/yyyy")</td>
+                <td>@projeto.DataFinalizacao.ToString("dd/MM/yyyy")</td>
                 <td>
                     <a href="@Url.Action("Editar", new { id = projeto.Id })" class="btn btn-primary">
                         <i class="fas fa-pen"></i> Editar

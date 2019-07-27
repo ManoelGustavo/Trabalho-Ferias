@@ -34,9 +34,9 @@ WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID_CLIENTE",projeto.IdCliente);
             comando.Parameters.AddWithValue("@NOME", projeto.Nome);
             comando.Parameters.AddWithValue("@DATA_CRIACAO_PROJETO", projeto.DataCriacaoProjeto);
-            comando.Parameters.AddWithValue("@ATA_FINALIZACAO", projeto.DataFinalizacao);
-            comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao]);
-            comando.Parameters.AddWithValue("@REGISTRO_ATIVO", projeto.RegistroAtivo);
+            comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao = DateTime.Now);
+            comando.Parameters.AddWithValue("@REGISTRO_ATIVO", projeto.RegistroAtivo = true);
             comando.Parameters.AddWithValue("@ID", projeto.Id);
 
             int quantidade = comando.ExecuteNonQuery();
@@ -47,7 +47,7 @@ WHERE id = @ID";
         public bool Apagar(int id)
         {
             SqlCommand comando = SistemaContext.AbrirConexao();
-            comando.CommandText = "DELETE projetos FROM registro_ativo = 0 WHERE id = @ID";
+            comando.CommandText = "UPDATE projetos SET registro_ativo = 0 WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
 
             int quantidade = comando.ExecuteNonQuery();
@@ -67,8 +67,8 @@ VALUES (@ID_CLIENTE, @NOME, @DATA_CRIACAO_PROJETO, @DATA_FINALIZACAO, @DATA_CRIA
             comando.Parameters.AddWithValue("@NOME", projeto.Nome);
             comando.Parameters.AddWithValue("@DATA_CRIACAO_PROJETO", projeto.DataCriacaoProjeto);
             comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
-            comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
-            comando.Parameters.AddWithValue("@REGISTRO_ATIVO", projeto.RegistroAtivo);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao = DateTime.Now);
+            comando.Parameters.AddWithValue("@REGISTRO_ATIVO", projeto.RegistroAtivo = true);
 
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
@@ -78,28 +78,7 @@ VALUES (@ID_CLIENTE, @NOME, @DATA_CRIACAO_PROJETO, @DATA_FINALIZACAO, @DATA_CRIA
 
         public Projeto ObterPeloId(int id)
         {
-            SqlCommand comando = SistemaContext.AbrirConexao();
-            comando.CommandText = "SELECT * FROM projetos WHERE id = @ID";
-            comando.Parameters.AddWithValue("@ID", id);
-
-            DataTable table = new DataTable();
-            table.Load(comando.ExecuteReader());
-            comando.Connection.Close();
-
-            if (table.Rows.Count == 0)
-            {
-                return null;
-            }
-
-            DataRow row = table.Rows[0];
-            Projeto projeto = new Projeto();
-            projeto.IdCliente = Convert.ToInt32(row["id_cliente"]);
-            projeto.Nome = row["nome"].ToString();
-            projeto.DataCriacaoProjeto = Convert.ToDateTime(row["data_criacao_projeto"]);
-            projeto.DataFinalizacao = Convert.ToDateTime(row["data_finalizacao"]);
-            projeto.Id = Convert.ToInt32(row["id"]);
-
-            return projeto;
+            return context.Projetos.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Projeto> ObterTodos(string busca)

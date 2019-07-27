@@ -45,7 +45,7 @@ WHERE id = @ID";
             comando.Parameters.AddWithValue("@TITULO", tarefa.Titulo);
             comando.Parameters.AddWithValue("@DESCRICAO", tarefa.Descricao);
             comando.Parameters.AddWithValue("@DURACAO", tarefa.Duracao);
-            comando.Parameters.AddWithValue("@DATA_CRIACAO", tarefa.DataCriacao);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", tarefa.DataCriacao = DateTime.Now);
             comando.Parameters.AddWithValue("@REGISTRO_ATIVO", tarefa.RegistroAtivo = true);
 
             int quantidade = comando.ExecuteNonQuery();
@@ -77,7 +77,7 @@ OUTPUT INSERTED.ID VALUES
             comando.Parameters.AddWithValue("@TITULO", tarefa.Titulo);
             comando.Parameters.AddWithValue("@DESCRICAO", tarefa.Descricao);
             comando.Parameters.AddWithValue("@DURACAO", tarefa.Duracao);
-            comando.Parameters.AddWithValue("@DATA_CRIACAO", tarefa.DataCriacao);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", tarefa.DataCriacao = DateTime.Now);
             comando.Parameters.AddWithValue("@REGISTRO_ATIVO", tarefa.RegistroAtivo = true);
 
             int id = Convert.ToInt32(comando.ExecuteScalar());

@@ -41,7 +41,7 @@ WHERE id = @ID";
             comando.Parameters.AddWithValue("@COMPLEMENTO", cliente.Complemento);
             comando.Parameters.AddWithValue("@LOGRADOURO", cliente.Logradouro);
             comando.Parameters.AddWithValue("@CEP", cliente.Cep);
-            comando.Parameters.AddWithValue("@DATA_CRIACAO", cliente.DataCriacao);
+            comando.Parameters.AddWithValue("@DATA_CRIACAO", cliente.DataCriacao = DateTime.Now);
             comando.Parameters.AddWithValue("@REGISTRO_ATIVO", cliente.RegistroAtivo = true);
             comando.Parameters.AddWithValue("@ID_CIDADE", cliente.IdCidade);
             comando.Parameters.AddWithValue("@ID", cliente.Id);
