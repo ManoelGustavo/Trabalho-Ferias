@@ -45,7 +45,7 @@ WHERE id = @ID";
         public bool Apagar(int id)
         {
             SqlCommand comando = SistemaContext.AbrirConexao();
-            comando.CommandText = "UPDATE cidades SET registro_ativo = 0 WHERE id = @ID";
+            comando.CommandText = "DELETE cidades FROM registro_ativo = 0 WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
 
             int quantidade = comando.ExecuteNonQuery();

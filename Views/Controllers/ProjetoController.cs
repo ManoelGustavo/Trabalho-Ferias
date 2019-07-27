@@ -21,45 +21,56 @@ namespace Views.Controllers
         // GET: Projeto
         public ActionResult Index()
         {
+            List<Projeto> projetos = repository.ObterTodos("");
+            ViewBag.Projetos = projetos;
             return View();
         }
 
-        [HttpGet]
-        public JsonResult ObterTodos(string busca)
+        public ActionResult Cadastro()
         {
-            List<Projeto> projetos = repository.ObterTodos(busca);
-            return Json(projetos, JsonRequestBehavior.AllowGet);
+            ClienteRepository clienteRepository = new ClienteRepository();
+            List<Cliente> clientes = clienteRepository.ObterTodos("");
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult Store(Projeto projeto)
+        public ActionResult Store(int idCliente, string nome, DateTime data_criacao_projeto, DateTime data_finalizacao)
         {
-            projeto.RegistroAtivo = true;
+            Projeto projeto = new Projeto();
+            projeto.IdCliente = idCliente;
+            projeto.Nome = nome;
+            projeto.DataCriacaoProjeto = data_criacao_projeto;
+            projeto.DataFinalizacao = data_finalizacao;
             repository.Inserir(projeto);
-            return Json(projeto);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("apagar/{id}")]
-        public JsonResult Apagar(int id)
+        public ActionResult Apagar(int id)
         {
-            bool apagou = repository.Apagar(id);
-            return Json(new { status = apagou }, JsonRequestBehavior.AllowGet);
+            repository.Apagar(id);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("obterpeloid/{id}")]
-        public JsonResult ObterPeloId(int id)
+        public ActionResult Editar(int id)
         {
             Projeto projeto = repository.ObterPeloId(id);
-            return Json(projeto, JsonRequestBehavior.AllowGet);
+            ViewBag.Projeto = projeto;
+
+            ClienteRepository clienteRepository = new ClienteRepository();
+            List<Cliente> clientes = clienteRepository.ObterTodos("");
+            ViewBag.Clientes = clientes;
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult Update(Projeto projeto)
+        public ActionResult Update(int idCliente, string nome, DateTime data_criacao_projeto, DateTime data_finalizacao, int id)
         {
-            bool alterou = repository.Alterar(projeto);
-            return Json(new { status = alterou });
+            Projeto projeto = new Projeto();
+            projeto.Id = id;
+            projeto.IdCliente = idCliente;
+            projeto.Nome = nome;
+            projeto.DataCriacaoProjeto = data_criacao_projeto;
+            projeto.DataFinalizacao = data_finalizacao;
+            repository.Alterar(projeto);
+            return RedirectToAction("Index");
         }
     }
 }
