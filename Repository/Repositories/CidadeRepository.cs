@@ -92,7 +92,6 @@ VALUES (@NOME, @NUMERO_HABITANTES, @ID_ESTADO, @DATA_CRIACAO, @REGISTRO_ATIVO)";
             cidade.NumeroHabitantes = Convert.ToInt32(row["numero_habitantes"]);
             cidade.IdEstado = Convert.ToInt32(row["id_estado"]);
             cidade.Id = Convert.ToInt32(row["id"]);
-
             return cidade;
         }
 

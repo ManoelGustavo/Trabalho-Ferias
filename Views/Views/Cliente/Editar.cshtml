@@ -11,10 +11,10 @@
                     <div class="form-row">
                         <div class="col-md-12">
                             <div class="form-label-group">
+                                <label for="id">Código</label>
                                 <input type="text" id="id" name="id" class="form-control"
                                        placeholder="Código" required="required"
                                        value="@ViewBag.Cliente.Id" readonly="readonly" />
-                                <label for="id">Código</label>
                             </div>
                         </div>
                     </div>
@@ -23,16 +23,16 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
+                                <label for="nome">Nome</label>
                                 <input type="text" id="nome" class="form-control" placeholder="Nome"
                                        required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cliente.Nome" />
-                                <label for="nome">Nome</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-label-group">
+                                <label for="cpf">Cpf</label>
                                 <input type="text" id="cpf" class="form-control" placeholder="Cpf"
                                        required="required" autofocus="autofocus" name="cpf" value="@ViewBag.Cliente.Cpf" />
-                                <label for="cpf">Cpf</label>
                             </div>
                         </div>
                     </div>
@@ -40,16 +40,16 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="date" id="data-nascimento" class="form-control" placeholder="Data Nascimento"
-                                           required="required" autofocus="autofocus" name="data_nascimento" value="@ViewBag.Cliente.DataNascimento" />
                                     <label for="data-nascimento">Data Nascimento</label>
+                                    <input type="date" id="data-nascimento" class="form-control" placeholder="Data Nascimento"
+                                           required="required" autofocus="autofocus" name="dataNascimento" value="@ViewBag.Cliente.DataNascimento.ToString("yyyy-MM-dd")" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
+                                    <label for="cep">Cep</label>
                                     <input type="text" id="cep" class="form-control" placeholder="Cep" required="required"
                                            autofocus="autofocus" name="cep" value="@ViewBag.Cliente.Cep" />
-                                    <label for="cep">Cep</label>
                                 </div>
                             </div>
                         </div>
@@ -58,10 +58,11 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <select id="campo-cidade" name="cidade" class="form-control" required="required">
+                                    <label for="campo-cidade">Cidade</label>
+                                    <select id="campo-cidade" name="idCidade" class="form-control" required="required">
                                         @foreach (Model.Cidade cidade in ViewBag.Cidades)
                                         {
-                                            if (true)
+                                            if (cidade.Id == ViewBag.Cliente.IdCidade)
                                             {
                                                 <option value="@cidade.Id" selected="selected">@cidade.Nome</option>
                                             }
@@ -75,9 +76,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
+                                    <label for="numero">Número</label>
                                     <input type="number" id="numero" class="form-control" placeholder="Número"
                                            required="required" autofocus="autofocus" name="numero" value="@ViewBag.Cliente.Numero" />
-                                    <label for="numero">Número</label>
                                 </div>
                             </div>
                         </div>
@@ -86,16 +87,16 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
+                                    <label for="complemento">Complemento</label>
                                     <input type="text" id="complemento" class="form-control" placeholder="Complemento"
                                            required="required" autofocus="autofocus" name="complemento" value="@ViewBag.Cliente.Complemento" />
-                                    <label for="complemento">Complemento</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="logradouro" class="form-control" placeholder="Logradouro"
-                                           required="required" autofocus="autofocus" name="logradouro" value="ViewBag.Cliente.Logradouro" />
                                     <label for="logradouro">Logradouro</label>
+                                    <input type="text" id="logradouro" class="form-control" placeholder="Logradouro"
+                                           required="required" autofocus="autofocus" name="logradouro" value="@ViewBag.Cliente.Logradouro" />
                                 </div>
                             </div>
                         </div>

@@ -17,49 +17,67 @@ namespace Views.Controllers
             repository = new ClienteRepository();
         }
 
-        [HttpGet]
-        // GET: Cliente
         public ActionResult Index()
         {
+            List<Cliente> clientes = repository.ObterTodos("");
+            ViewBag.Clientes = clientes;
             return View();
         }
 
-        [HttpGet]
-        public JsonResult ObterTodos(string busca)
+        public ActionResult Cadastro()
         {
-            List<Cliente> clientes = repository.ObterTodos(busca);
-            return Json(clientes, JsonRequestBehavior.AllowGet);
+            CidadeRepository cidadeRepository = new CidadeRepository();
+            List<Cidade> cidades = cidadeRepository.ObterTodos("");
+            ViewBag.Cidades = cidades;
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult Store(Cliente cliente)
+        public ActionResult Store(int idCidade, string nome, string cpf, DateTime dataNascimento, int numero, string complemento, string logradouro, string cep)
         {
-            cliente.RegistroAtivo = true;
+            Cliente cliente = new Cliente();
+            cliente.IdCidade = idCidade;
+            cliente.Nome = nome;
+            cliente.Cpf = cpf;
+            cliente.DataNascimento = dataNascimento;
+            cliente.Numero = numero;
+            cliente.Complemento = complemento;
+            cliente.Logradouro = logradouro;
+            cliente.Cep = cep;
             repository.Inserir(cliente);
-            return Json(cliente);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("apagar/{id}")]
-        public JsonResult Apagar(int id)
+        public ActionResult Apagar(int id)
         {
-            bool apagou = repository.Apagar(id);
-            return Json(new { status = apagou }, JsonRequestBehavior.AllowGet);
+            repository.Apagar(id);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("obterpeloid/{id}")]
-        public JsonResult ObterPeloId(int id)
+        public ActionResult Editar(int id)
         {
             Cliente cliente = repository.ObterPeloId(id);
-            return Json(cliente, JsonRequestBehavior.AllowGet);
+            ViewBag.Cliente = cliente;
+
+            CidadeRepository cidadeRepository = new CidadeRepository();
+            List<Cidade> cidades = cidadeRepository.ObterTodos("");
+            ViewBag.Cidades = cidades;
+            return View();
         }
 
-        [HttpPost]
-        public JsonResult Update(Cliente cliente)
+        public ActionResult Update(int id, int idCidade, string nome, string cpf, DateTime dataNascimento, int numero, string complemento, string logradouro, string cep)
         {
-            bool alterou = repository.Alterar(cliente);
-            return Json(new { status = alterou });
+            Cliente cliente = new Cliente();
+            cliente.Id = id;
+            cliente.IdCidade = idCidade;
+            cliente.Nome = nome;
+            cliente.Cpf = cpf;
+            cliente.DataNascimento = dataNascimento;
+            cliente.Numero = numero;
+            cliente.Complemento = complemento;
+            cliente.Logradouro = logradouro;
+            cliente.Cep = cep;
+            repository.Alterar(cliente);
+            return RedirectToAction("Index");
         }
     }
 }
