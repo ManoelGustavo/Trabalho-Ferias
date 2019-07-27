@@ -3,7 +3,9 @@
 }
 
 <h2 class="text-center">Lista de Clientes</h2>
-<button class="btn btn-primary" data-toggle="modal" href="@Url.Action("Cadastro", "Cliente")"><i class="fas fa-plus"></i> Novo Cliente</button>
+<div>
+    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1"><i class="fa fa-plus"></i> Novo Cliente</a>
+</div>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
@@ -34,7 +36,7 @@
                 <td>@cliente.Cidade.Nome</td>
                 <td>@cliente.Nome</td>
                 <td>@cliente.Cpf</td>
-                <td>@cliente.DataNascimento</td>
+                <td>@cliente.DataNascimento.ToString("dd/MM/yyyy")</td>
                 <td>@cliente.Numero</td>
                 <td>@cliente.Complemento</td>
                 <td>@cliente.Logradouro</td>
