@@ -15,7 +15,7 @@ DELETE FROM usuarios;
 DELETE FROM categorias;
 DELETE FROM tarefas;
 
-SELECT * FROM estados;
+SELECT * FROM usuarios;
 
 CREATE TABLE estados(
 	id INT PRIMARY KEY IDENTITY(1,1),
@@ -30,7 +30,7 @@ CREATE TABLE cidades(
 	id_estado INT NOT NULL,
 	FOREIGN KEY(id_estado) REFERENCES estados(id),
 	nome VARCHAR(50) NOT NULL,
-	numero_habitantes INT NOT NULL,
+	numero_habitantes VARCHAR(50) NOT NULL,
 	data_criacao DATETIME2(7) NOT NULL,
 	registro_ativo BIT NOT NULL
 );

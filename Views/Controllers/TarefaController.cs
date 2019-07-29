@@ -1,4 +1,5 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,16 @@ namespace Views.Controllers
             List<Tarefa> tarefas = repository.ObterTodos("");
             ViewBag.Tarefas = tarefas;
             return View();
+        }
+
+        public ActionResult ObterTodos(string busca)
+        {
+            List<Tarefa> tarefas = repository.ObterTodos(busca);
+            string jsonResult = JsonConvert.SerializeObject(tarefas, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Content(jsonResult, "application/json");
         }
 
         public ActionResult Cadastro()
@@ -48,7 +59,7 @@ namespace Views.Controllers
             tarefa.IdCategoria = idCategoria;
             tarefa.Titulo = titulo;
             tarefa.Descricao = descricao;
-            tarefa.Duracao = duracao.Date;
+            tarefa.Duracao = duracao;
             repository.Inserir(tarefa);
             return RedirectToAction("Index");
         }

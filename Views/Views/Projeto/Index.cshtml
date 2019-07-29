@@ -4,12 +4,12 @@
 
 <h2 class="text-center">Lista de Projetos</h2>
 <div>
-    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1"><i class="fa fa-plus"></i> Novo Projeto</a>
+    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1">Novo Projeto</a>
 </div>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
-            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group" />
+            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-control" />
         </div>
     </div>
 </div>
@@ -19,40 +19,21 @@
             <th>Código</th>
             <th>Cliente</th>
             <th>Nome Projeto</th>
-            <th>Data de Criaçõa</th>
+            <th>Data de Criação</th>
             <th>Data de Finalização</th>
             <th>Ação</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (Model.Projeto projeto in ViewBag.Projetos)
-        {
-            <tr>
-                <td>@projeto.Id</td>
-                <td>@projeto.Cliente.Nome</td>
-                <td>@projeto.Nome</td>
-                <td>@projeto.DataCriacaoProjeto.ToString("dd/MM/yyyy")</td>
-                <td>@projeto.DataFinalizacao.ToString("dd/MM/yyyy")</td>
-                <td>
-                    <a href="@Url.Action("Editar", new { id = projeto.Id })" class="btn btn-primary">
-                        <i class="fas fa-pen"></i> Editar
-                    </a>
-
-                    <a href="@Url.Action("Apagar", new { id = projeto.Id })" class="btn btn-danger">
-                        <i class="fas fa-trash"></i> Apagar
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
+    <tbody id="lista-projetos"></tbody>
     <tfoot>
         <tr>
             <th>Código</th>
             <th>Cliente</th>
             <th>Nome Projeto</th>
-            <th>Data de Criaçõa</th>
+            <th>Data de Criação</th>
             <th>Data de Finalização</th>
             <th>Ação</th>
         </tr>
     </tfoot>
 </table>
+<script src="~/Scripts/Projeto/Projeto.js"></script>

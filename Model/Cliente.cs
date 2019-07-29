@@ -15,6 +15,15 @@ namespace Model
         [ForeignKey("IdCidade")]
         public virtual Cidade Cidade { get; set; }
 
+        [NotMapped]
+        public string NomeCidade
+        {
+            get
+            {
+                return Cidade.Nome;
+            }
+        }
+
         [Column("id_cidade")]
         public int IdCidade { get; set; }
 

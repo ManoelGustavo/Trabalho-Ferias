@@ -1,4 +1,5 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,14 @@ namespace Views.Controllers
         }
 
         [HttpGet]
-        public JsonResult ObterTodos(string busca)
+        public ContentResult ObterTodos(string busca)
         {
             List<Categoria> categorias = repository.ObterTodos(busca);
-            return Json(categorias, JsonRequestBehavior.AllowGet);
+            string jsonResult = JsonConvert.SerializeObject(categorias, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Content(jsonResult, "application/json");
         }
 
         [HttpPost]
@@ -49,10 +54,14 @@ namespace Views.Controllers
 
         [HttpGet]
         [Route("obterpeloid/{id}")]
-        public JsonResult ObterPeloId(int id)
+        public ContentResult ObterPeloId(int id)
         {
             Categoria categoria = repository.ObterPeloId(id);
-            return Json(categoria, JsonRequestBehavior.AllowGet);
+            string jsonResult = JsonConvert.SerializeObject(categoria, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Content(jsonResult, "application/json");
         }
 
         [HttpPost]

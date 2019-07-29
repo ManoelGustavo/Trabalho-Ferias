@@ -8,29 +8,31 @@
         <div class="card-body">
             <form action="@Url.Action("Store")" method="post">
                 <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-usuario">Usuario</label>
-                                <select id="campo-usuario" name="idUsuarioResponsavel" class="form-control" required="required">
-                                    <option disabled="disabled" selected="selected">Selecione o Usuário Responsável</option>
-                                    @foreach (Model.Usuario usuario in ViewBag.Usuarios)
-                                    {
-                                        <option value="@usuario.Id">@usuario.Nome</option>
-                                    }
-                                </select>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-usuario">Usuario</label>
+                                    <select id="campo-usuario" name="idUsuarioResponsavel" class="form-control" required="required">
+                                        <option disabled="disabled" selected="selected">Selecione o Usuário Responsável</option>
+                                        @foreach (Model.Usuario usuario in ViewBag.Usuarios)
+                                        {
+                                            <option value="@usuario.Id">@usuario.Nome</option>
+                                        }
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-projeto">Projeto</label>
-                                <select id="campo-projeto" name="idProjeto" class="form-control" required="required">
-                                    <option disabled="disabled" selected="selected">Selecione um Projeto</option>
-                                    @foreach (Model.Projeto projeto in ViewBag.Projetos)
-                                    {
-                                        <option value="@projeto.Id">@projeto.Nome</option>
-                                    }
-                                </select>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-projeto">Projeto</label>
+                                    <select id="campo-projeto" name="idProjeto" class="form-control" required="required">
+                                        <option disabled="disabled" selected="selected">Selecione um Projeto</option>
+                                        @foreach (Model.Projeto projeto in ViewBag.Projetos)
+                                        {
+                                            <option value="@projeto.Id">@projeto.Nome</option>
+                                        }
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="campo-duracao">Duração</label>
-                                    <input type="datetime" id="campo-duracao" class="form-control" placeholder="Duração"
+                                    <input type="datetime" id="campo-duracao" class="form-control tempo" placeholder="Duração"
                                            required="required" autofocus="autofocus" name="duracao" />
                                 </div>
                             </div>

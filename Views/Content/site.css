@@ -1,0 +1,10 @@
+﻿.btn-success {
+    align-self: center;
+    height: 38px;
+    margin-left: auto;
+}
+
+.modal-body {
+    display: flex;
+    flex-flow: column nowrap;
+}

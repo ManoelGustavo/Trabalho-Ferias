@@ -15,6 +15,15 @@ namespace Model
         [ForeignKey("IdEstado")]
         public virtual Estado Estado { get; set; }
 
+        [NotMapped]
+        public string NomeEstado
+        {
+            get
+            {
+                return Estado.Nome;
+            }
+        }
+
         [Column("id_estado")]
         public int IdEstado { get; set; }
 
@@ -22,6 +31,6 @@ namespace Model
         public string Nome { get; set; }
 
         [Column("numero_habitantes")]
-        public int NumeroHabitantes { get; set; }
+        public string NumeroHabitantes { get; set; }
     }
 }

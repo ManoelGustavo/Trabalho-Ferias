@@ -1,5 +1,10 @@
 ﻿$(function () {
+    $("#modalCadastroEstado").on('hide.bs.modal', function () {
+        limparCampos();
+    });
+
     $id = -1;
+
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
         $.ajax({
@@ -14,11 +19,6 @@
         });
     });
 
-    $("#campo-pesquisa").on("keyup", function (e) {
-        if (e.keyCode == 13) {
-            obterTodos();
-        }
-    })
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
         $("#lista-estados").empty();
@@ -45,12 +45,12 @@
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
                     botaoEditar.classList.add("btn", "btn-primary", "mr-3", "botao-editar");
-                    botaoEditar.innerHTML = "<i class=\"fas fa-pen\"></i> Editar";
+                    botaoEditar.innerHTML = "Editar";
                     botaoEditar.setAttribute("data-id", dado.Id);
 
                     var botaoApagar = document.createElement("button");
-                    botaoApagar.innerHTML = "<i class=\"fas fa-trash\"></i> Apagar";
                     botaoApagar.classList.add("btn", "btn-danger", "botao-apagar");
+                    botaoApagar.innerHTML = "Apagar";
                     botaoApagar.setAttribute("data-id", dado.Id);
 
                     colunaAcao.appendChild(botaoEditar);
@@ -65,6 +65,7 @@
             }
         })
     }
+    window.obterTodos = obterTodos;
 
     $("#estado-botao-salvar").on("click", function () {
         if ($id == -1) {
@@ -94,7 +95,7 @@
                 console.log("ERRO");
             }
         });
-    };
+    }
 
     function inserir() {
         $nome = $("#campo-nome").val();
@@ -115,12 +116,12 @@
                 console.log("ERRO");
             }
         });
-    };
+    }
 
     function limparCampos() {
         $("#campo-nome").val("");
         $("#campo-sigla").val("");
-    };
+    }
 
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
@@ -129,9 +130,6 @@
             method: 'get',
             success: function (data) {
                 obterTodos();
-            },
-            error: function (data) {
-                console.log('Deu ruim filhão');
             }
         });
     });

@@ -28,6 +28,7 @@ namespace Repository.Repositories
             usuarioOriginal.Nome = usuario.Nome;
             usuarioOriginal.Login = usuario.Login;
             usuarioOriginal.Senha = usuario.Senha;
+            context.SaveChanges();
             return true;
         }
 

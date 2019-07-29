@@ -1,27 +1,15 @@
 ﻿$(function () {
-    $("#modalCadastroCategoria").on('hide.bs.modal', function () {
-        limparCampos();
-    });
 
-    $id = -1;
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
-        $.ajax({
-            url: '/categoria/obterpeloid/' + $id,
-            method: 'get',
-            success: function (data) {
-                $id = data.Id;
-                $("#campo-nome").val(data.Nome);
-                $("#modalCadastroCategoria").modal("show");
-            },
-        });
+        window.location.replace('/cidade/editar/' + $id)
     });
-    
+
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
-        $("#lista-categorias").empty();
+        $("#lista-cidades").empty();
         $.ajax({
-            url: '/categoria/obtertodos',
+            url: '/cidade/obtertodos',
             method: 'get',
             data: {
                 busca: $busca
@@ -34,8 +22,14 @@
                     var colunaCodigo = document.createElement("td");
                     colunaCodigo.innerHTML = dado.Id;
 
+                    var colunaNomeEstado = document.createElement("td");
+                    colunaNomeEstado.innerHTML = dado.NomeEstado;
+
                     var colunaNome = document.createElement("td");
                     colunaNome.innerHTML = dado.Nome;
+
+                    var colunaNumeroHabitantes = document.createElement("td");
+                    colunaNumeroHabitantes.innerHTML = dado.NumeroHabitantes;
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
@@ -52,77 +46,27 @@
                     colunaAcao.appendChild(botaoApagar);
 
                     linha.appendChild(colunaCodigo);
+                    linha.appendChild(colunaNomeEstado);
                     linha.appendChild(colunaNome);
+                    linha.appendChild(colunaNumeroHabitantes);
                     linha.appendChild(colunaAcao);
-                    document.getElementById("lista-categorias").appendChild(linha);
+                    document.getElementById("lista-cidades").appendChild(linha);
                 }
             }
         })
     }
     window.obterTodos = obterTodos;
 
-    $("#categoria-botao-salvar").on("click", function () {
-        if ($id == -1) {
-            inserir();
-        } else {
-            alterar();
-        }
-    });
-    function alterar() {
-        $nome = $("#campo-nome").val();
-        $.ajax({
-            method: "post",
-            url: "/categoria/update",
-            data: {
-                Nome: $nome,
-                Id: $id
-            },
-            success: function (data) {
-                $id = -1;
-                $("#modalCadastroCategoria").modal("hide");
-                obterTodos();
-                limparCampos();
-            },
-            error: function (data) {
-                console.log("ERRO");
-            }
-        });
-    };
-
-    function inserir() {
-        $nome = $("#campo-nome").val();
-        $.ajax({
-            method: "post",
-            url: "/categoria/store",
-            data: {
-                Nome: $nome
-            },
-            success: function (data) {
-                $id = -1;
-                $("#modalCadastroCategoria").modal("hide");
-                obterTodos();
-                limparCampos();
-            },
-            error: function (data) {
-                console.log("ERRO");
-            }
-        })
-    };
-
-    function limparCampos() {
-        $("#campo-nome").val("");
-    };
-
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
         $.ajax({
-            url: '/categoria/apagar/' + $id,
+            url: '/cidade/apagar/' + $id,
             method: 'get',
             success: function (data) {
                 obterTodos();
             },
             error: function (data) {
-                console.log('Deu ruim filhão');
+                console.log('ERRO');
             }
         });
     });

@@ -1,4 +1,5 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,16 @@ namespace Views.Controllers
             return View();
         }
 
+        public ActionResult ObterTodos(string busca)
+        {
+            List<Cidade> cidades = repository.ObterTodos(busca);
+            string jsonResult = JsonConvert.SerializeObject(cidades, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Content(jsonResult, "application/json");
+        }
+
         public ActionResult Cadastro()
         {
             EstadoRepository estadoRepository = new EstadoRepository();
@@ -32,7 +43,7 @@ namespace Views.Controllers
             return View();
         }
 
-        public ActionResult Store(int idEstado, string nome, int numeroHabitantes)
+        public ActionResult Store(int idEstado, string nome, string numeroHabitantes)
         {
             Cidade cidade = new Cidade();
             cidade.IdEstado = idEstado;
@@ -59,7 +70,7 @@ namespace Views.Controllers
             return View();
         }
 
-        public ActionResult Update(int idEstado, string nome, int numeroHabitantes, int id)
+        public ActionResult Update(int idEstado, string nome, string numeroHabitantes, int id)
         {
             Cidade cidade = new Cidade();
             cidade.Id = id;

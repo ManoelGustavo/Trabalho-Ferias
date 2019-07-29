@@ -4,12 +4,12 @@
 
 <h2 class="text-center">Lista de Tarefas</h2>
 <div>
-    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1"><i class="fa fa-plus"></i> Nova Tarefa</a>
+    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1">Nova Tarefa</a>
 </div>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
-            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group" />
+            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-control" />
         </div>
     </div>
 </div>
@@ -26,27 +26,7 @@
             <th>Ação</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (Model.Tarefa tarefa in ViewBag.Tarefas)
-        {
-            <tr>
-                <td>@tarefa.Id</td>
-                <td>@tarefa.Usuario.Nome</td>
-                <td>@tarefa.Projeto.Nome</td>
-                <td>@tarefa.Categoria.Nome</td>
-                <td>@tarefa.Titulo</td>
-                <td>@tarefa.Descricao</td>
-                <td>@tarefa.Duracao.ToString("HH:mm:ss")</td>
-                <td>
-                    <a href="@Url.Action("Editar", new { id = tarefa.Id })" class="btn btn-primary">
-                    <i class="fas fa-pen"></i> Editar</a>
-
-                    <a href="@Url.Action("Apagar", new { id = tarefa.Id })" class="btn btn-danger">
-                    <i class="fas fa-trash"></i> Apagar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+    <tbody id="lista-tarefas"></tbody>
     <tfoot>
         <tr>
             <th>Código</th>
@@ -60,3 +40,4 @@
         </tr>
     </tfoot>
 </table>
+<script src="~/Scripts/Tarefas/Tarefa.js"></script>   

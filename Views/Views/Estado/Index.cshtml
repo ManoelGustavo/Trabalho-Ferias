@@ -1,10 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
 <h2 class="text-center">Lista de Estados</h2>
-<button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroEstado"><i class="fas fa-plus"></i> Novo Estado</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroEstado">Novo Estado</button>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
@@ -40,26 +39,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-nome">Nome</label>
-                            <input type="text" id="campo-nome" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="campo-Sigla">Sigla</label>
-                                <input type="text" id="campo-sigla" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="estado-botao-salvar"><i class="fas fa-save"></i> Salvar</button>
-                    </div>
+                <div class="form-group">
+                    <label for="campo-nome">Nome</label>
+                    <input type="text" id="campo-nome" class="form-control" />
                 </div>
+                <div class="form-group">
+                    <label for="campo-Sigla">Sigla</label>
+                    <input type="text" id="campo-sigla" class="form-control" />
+                </div>
+                <button type="button" class="btn btn-success" id="estado-botao-salvar">Salvar</button>
             </div>
         </div>
     </div>
+    <script src="~/Scripts/Estado/Estado.js"></script>
 </div>

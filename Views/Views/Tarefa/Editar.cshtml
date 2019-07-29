@@ -21,59 +21,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-usuario">Usuario</label>
-                                <select id="campo-usuario" name="idUsuarioResponsavel" class="form-control" required="required">
-                                    @foreach (Model.Usuario usuario in ViewBag.Usuarios)
-                                    {
-                                        if (usuario.Id == ViewBag.Tarefa.IdUsuarioResponsavel)
-                                        {
-                                            <option value="@usuario.Id" selected="selected">@usuario.Nome</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="@usuario.Id">@usuario.Nome</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-projeto">Projeto</label>
-                                <select id="campo-projeto" name="idProjeto" class="form-control" required="required">
-                                    @foreach (Model.Projeto projeto in ViewBag.Projetos)
-                                    {
-                                        if (projeto.Id == ViewBag.Tarefa.IdProjeto)
-                                        {
-                                            <option value="@projeto.Id" selected="selected">@projeto.Nome</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="@projeto.Id">@projeto.Nome</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <label for="campo-categoria">Categoria</label>
-                                    <select id="campo-categoria" name="idCategoria" class="form-control" required="required">
-                                        @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                                    <label for="campo-usuario">Usuario</label>
+                                    <select id="campo-usuario" name="idUsuarioResponsavel" class="form-control" required="required">
+                                        @foreach (Model.Usuario usuario in ViewBag.Usuarios)
                                         {
-                                            if (categoria.Id == ViewBag.Tarefa.IdCategoria)
+                                            if (usuario.Id == ViewBag.Tarefa.IdUsuarioResponsavel)
                                             {
-                                                <option value="@categoria.Id" selected="selected">@categoria.Nome</option>
+                                                <option value="@usuario.Id" selected="selected">@usuario.Nome</option>
                                             }
                                             else
                                             {
-                                                <option value="@categoria.Id">@categoria.Nome</option>
+                                                <option value="@usuario.Id">@usuario.Nome</option>
                                             }
                                         }
                                     </select>
@@ -81,34 +43,74 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <label for="campo-titulo">Título</label>
-                                    <input type="text" id="campo-titulo" class="form-control" required="required"
-                                           placeholder="Título" autofocus="autofocus" name="titulo" value="@ViewBag.Tarefa.Titulo" />
+                                    <label for="campo-projeto">Projeto</label>
+                                    <select id="campo-projeto" name="idProjeto" class="form-control" required="required">
+                                        @foreach (Model.Projeto projeto in ViewBag.Projetos)
+                                        {
+                                            if (projeto.Id == ViewBag.Tarefa.IdProjeto)
+                                            {
+                                                <option value="@projeto.Id" selected="selected">@projeto.Nome</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@projeto.Id">@projeto.Nome</option>
+                                            }
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-label-group">
-                                    <label for="campo-descricao">Descrição</label>
-                                    <textarea cols="25" rows="3" id="campo-descricao" class="form-control" placeholder="Descrição"
-                                              required="required" autofocus="autofocus" name="descricao">@ViewBag.Tarefa.Descricao</textarea>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="campo-categoria">Categoria</label>
+                                        <select id="campo-categoria" name="idCategoria" class="form-control" required="required">
+                                            @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                                            {
+                                                if (categoria.Id == ViewBag.Tarefa.IdCategoria)
+                                                {
+                                                    <option value="@categoria.Id" selected="selected">@categoria.Nome</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@categoria.Id">@categoria.Nome</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="campo-titulo">Título</label>
+                                        <input type="text" id="campo-titulo" class="form-control" required="required"
+                                               placeholder="Título" autofocus="autofocus" name="titulo" value="@ViewBag.Tarefa.Titulo" />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-label-group">
-                                    <label for="campo-duracao">Duração</label>
-                                    <input type="datetime" id="campo-duracao" class="form-control" placeholder="Duração"
-                                           required="required" autofocus="autofocus" name="duracao" value="@ViewBag.Tarefa.Duracao" />
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="campo-descricao">Descrição</label>
+                                        <textarea cols="25" rows="3" id="campo-descricao" class="form-control" placeholder="Descrição"
+                                                  required="required" autofocus="autofocus" name="descricao">@ViewBag.Tarefa.Descricao</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="campo-duracao">Duração</label>
+                                        <input type="datetime" id="campo-duracao" class="form-control tempo" placeholder="Duração"
+                                               required="required" autofocus="autofocus" name="duracao" value="@ViewBag.Tarefa.Duracao.ToString("HH:mm:ss")" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
-            </form>
+                    <button class="btn btn-success col-md-12" type="submit">Salvar</button>
+</form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="@Url.Action("Index", "Tarefa")">Deseja alterar alguma tarefa já registrada ?</a>
             </div>

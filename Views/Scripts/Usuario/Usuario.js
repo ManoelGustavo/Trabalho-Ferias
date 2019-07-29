@@ -1,4 +1,8 @@
 ﻿$(function () {
+    $("#modalCadastroUsuario").on('hide.bs.modal', function () {
+        limparCampos();
+    });
+
     $id = -1;
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
@@ -15,11 +19,6 @@
         });
     });
 
-    $("#campo-pesquisa").on("keyup", function (e) {
-        if (e.keyCode == 13) {
-            obterTodos();
-        }
-    })
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
         $("#lista-usuarios").empty();
@@ -43,18 +42,16 @@
                     var colunaLogin = document.createElement("td");
                     colunaLogin.innerHTML = dado.Login;
 
-                    var colunaSenha = document.createElement("td");
-                    colunaSenha.innerHTML = dado.Senha;
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
                     botaoEditar.classList.add("btn", "btn-primary", "mr-3", "botao-editar");
-                    botaoEditar.innerHTML = "<i class=\"fas fa-pen\"></i> Editar";
+                    botaoEditar.innerHTML = "Editar";
                     botaoEditar.setAttribute("data-id", dado.Id);
 
                     var botaoApagar = document.createElement("button");
-                    botaoApagar.innerHTML = "<i class=\"fas fa-trash\"></i> Apagar";
                     botaoApagar.classList.add("btn", "btn-danger", "botao-apagar");
+                    botaoApagar.innerHTML = "Apagar";
                     botaoApagar.setAttribute("data-id", dado.Id);
 
                     colunaAcao.appendChild(botaoEditar);
@@ -63,13 +60,13 @@
                     linha.appendChild(colunaCodigo);
                     linha.appendChild(colunaNome);
                     linha.appendChild(colunaLogin);
-                    linha.appendChild(colunaSenha);
                     linha.appendChild(colunaAcao);
                     document.getElementById("lista-usuarios").appendChild(linha);
                 }
             }
         })
     }
+    window.obterTodos = obterTodos;
 
     $("#usuario-botao-salvar").on("click", function () {
         if ($id == -1) {

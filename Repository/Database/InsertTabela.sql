@@ -6,11 +6,11 @@
 ('Piauí', 'PI', '2019-05-05', 1);
 
 INSERT INTO cidades(id_estado, nome, numero_habitantes, data_criacao, registro_ativo) VALUES
-(1, 'Blumenau', 352460, '2018-06-06', 1),
-(2, 'Ribeirão Preto', 590593, '2018-07-07', 1),
-(3, 'Bom Jesus do Itabapoana', 35411, '2018-08-08', 1),
-(4, 'Gramado', 31655, '2018-09-09', 1),
-(5, 'Parnaíba', 137485, '2018-10-10', 1);
+(1, 'Blumenau', '352460', '2018-06-06', 1),
+(2, 'Ribeirão Preto', '590593', '2018-07-07', 1),
+(3, 'Bom Jesus do Itabapoana', '35411', '2018-08-08', 1),
+(4, 'Gramado', '31655', '2018-09-09', 1),
+(5, 'Parnaíba', '137485', '2018-10-10', 1);
 
 INSERT INTO clientes(id_cidade, nome, cpf, data_nascimento, numero, complemento, logradouro, cep, data_criacao, registro_ativo) VALUES
 (5, 'João', '123.321.456-56', '1980-01-10', 2455, 'Nova A', 'Rua A', '44053816', '2017-11-11', 1),

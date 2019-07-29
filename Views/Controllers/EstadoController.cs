@@ -1,4 +1,5 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,19 @@ namespace Views.Controllers
         }
 
         [HttpGet]
-        public JsonResult ObterTodos(string busca)
+        public ContentResult ObterTodos(string busca)
         {
             List<Estado> estados = repository.ObterTodos(busca);
-            return Json(estados, JsonRequestBehavior.AllowGet);
+
+            // Para evitar erro de referência circular entre Cidade e Estado, é utilizado 
+            // o Newtonsoft para serializar o objeto com a configuração ReferenceLoopHandling para Ignore, fazendo com que a 
+            // referência cirular seja ignorada.
+            string jsonResult = JsonConvert.SerializeObject(estados, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
+            return Content(jsonResult, "application/json");
         }
 
         [HttpPost]
@@ -52,10 +62,14 @@ namespace Views.Controllers
 
         [HttpGet]
         [Route("obterpeloid/{id}")]
-        public JsonResult ObterPeloId(int id)
+        public ContentResult ObterPeloId(int id)
         {
             Estado estado = repository.ObterPeloId(id);
-            return Json(estado, JsonRequestBehavior.AllowGet);
+            string jsonResult = JsonConvert.SerializeObject(estado, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Content(jsonResult, "application/json");
         }
 
         [HttpPost]

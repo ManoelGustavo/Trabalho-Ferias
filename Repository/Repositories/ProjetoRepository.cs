@@ -83,7 +83,7 @@ VALUES (@ID_CLIENTE, @NOME, @DATA_CRIACAO_PROJETO, @DATA_FINALIZACAO, @DATA_CRIA
 
         public List<Projeto> ObterTodos(string busca)
         {
-            return context.Projetos.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Nome.Contains(busca)))).OrderBy(x => x.Nome).ToList();
+            return context.Projetos.Where(x => x.RegistroAtivo && (string.IsNullOrEmpty(busca) ? true : (x.Nome.Contains(busca) || x.Cliente.Nome.Contains(busca)))).OrderBy(x => x.Nome).ToList();
         }
     }
 }

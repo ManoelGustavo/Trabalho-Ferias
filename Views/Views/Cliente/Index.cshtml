@@ -1,15 +1,15 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Index";
 }
 
 <h2 class="text-center">Lista de Clientes</h2>
 <div>
-    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1"><i class="fa fa-plus"></i> Novo Cliente</a>
+    <a href="@Url.Action("Cadastro")" class="btn btn-primary mt-1">Novo Cliente</a>
 </div>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
-            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-group"/>
+            <input type="text" id="campo-pesquisa" placeholder="Busca" class="form-control" />
         </div>
     </div>
 </div>
@@ -17,52 +17,31 @@
     <thead>
         <tr>
             <th>Código</th>
-            <th>Cidade</th>
             <th>Nome</th>
             <th>Cpf</th>
             <th>Data Nascimento</th>
+            <th>Cidade</th>
+            <th>Cep</th>
             <th>Número</th>
             <th>Complemento</th>
             <th>Logradouro</th>
-            <th>Cep</th>
             <th>Ação</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach(Model.Cliente cliente in ViewBag.Clientes)
-        {
-            <tr>
-                <td>@cliente.Id</td>
-                <td>@cliente.Cidade.Nome</td>
-                <td>@cliente.Nome</td>
-                <td>@cliente.Cpf</td>
-                <td>@cliente.DataNascimento.ToString("dd/MM/yyyy")</td>
-                <td>@cliente.Numero</td>
-                <td>@cliente.Complemento</td>
-                <td>@cliente.Logradouro</td>
-                <td>@cliente.Cep</td>
-                <td>
-                    <a href="@Url.Action("Editar", new { id = cliente.Id})" class="btn btn-primary">
-                    <i class="fas fa-pen"></i> Editar</a>
-
-                    <a href="@Url.Action("Apagar", new { id = cliente.Id})" class="btn btn-danger">
-                    <i class="fas fa-trash"></i> Apagar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+    <tbody id="lista-clientes"></tbody>
     <tfoot>
         <tr>
             <th>Código</th>
-            <th>Cidade</th>
             <th>Nome</th>
             <th>Cpf</th>
             <th>Data Nascimento</th>
+            <th>Cidade</th>
+            <th>Cep</th>
             <th>Número</th>
             <th>Complemento</th>
             <th>Logradouro</th>
-            <th>Cep</th>
             <th>Ação</th>
         </tr>
     </tfoot>
 </table>
+<script src="~/Scripts/Cliente/Cliente.js"></script>

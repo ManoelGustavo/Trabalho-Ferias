@@ -1,27 +1,15 @@
 ﻿$(function () {
-    $("#modalCadastroCategoria").on('hide.bs.modal', function () {
-        limparCampos();
-    });
 
-    $id = -1;
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
-        $.ajax({
-            url: '/categoria/obterpeloid/' + $id,
-            method: 'get',
-            success: function (data) {
-                $id = data.Id;
-                $("#campo-nome").val(data.Nome);
-                $("#modalCadastroCategoria").modal("show");
-            },
-        });
+        window.location.replace('/cliente/editar/' + $id)
     });
-    
+
     function obterTodos() {
         $busca = $("#campo-pesquisa").val();
-        $("#lista-categorias").empty();
+        $("#lista-clientes").empty();
         $.ajax({
-            url: '/categoria/obtertodos',
+            url: '/cliente/obtertodos',
             method: 'get',
             data: {
                 busca: $busca
@@ -36,6 +24,27 @@
 
                     var colunaNome = document.createElement("td");
                     colunaNome.innerHTML = dado.Nome;
+
+                    var colunaCpf = document.createElement("td");
+                    colunaCpf.innerHTML = dado.Cpf;
+
+                    var colunaDataNascimento = document.createElement("td");
+                    colunaDataNascimento.innerHTML = new Date(dado.DataNascimento).toLocaleDateString();
+
+                    var colunaNomeCidade = document.createElement("td");
+                    colunaNomeCidade.innerHTML = dado.NomeCidade;
+
+                    var colunaCep = document.createElement("td");
+                    colunaCep.innerHTML = dado.Cep;
+
+                    var colunaNumero = document.createElement("td");
+                    colunaNumero.innerHTML = dado.Numero;
+
+                    var colunaComplemento = document.createElement("td");
+                    colunaComplemento.innerHTML = dado.Complemento;
+
+                    var colunaLogradouro = document.createElement("td");
+                    colunaLogradouro.innerHTML = dado.Logradouro;
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
@@ -53,76 +62,31 @@
 
                     linha.appendChild(colunaCodigo);
                     linha.appendChild(colunaNome);
+                    linha.appendChild(colunaCpf);
+                    linha.appendChild(colunaDataNascimento);
+                    linha.appendChild(colunaNomeCidade);
+                    linha.appendChild(colunaCep);
+                    linha.appendChild(colunaNumero);
+                    linha.appendChild(colunaComplemento);
+                    linha.appendChild(colunaLogradouro);
                     linha.appendChild(colunaAcao);
-                    document.getElementById("lista-categorias").appendChild(linha);
+                    document.getElementById("lista-clientes").appendChild(linha);
                 }
             }
         })
     }
     window.obterTodos = obterTodos;
 
-    $("#categoria-botao-salvar").on("click", function () {
-        if ($id == -1) {
-            inserir();
-        } else {
-            alterar();
-        }
-    });
-    function alterar() {
-        $nome = $("#campo-nome").val();
-        $.ajax({
-            method: "post",
-            url: "/categoria/update",
-            data: {
-                Nome: $nome,
-                Id: $id
-            },
-            success: function (data) {
-                $id = -1;
-                $("#modalCadastroCategoria").modal("hide");
-                obterTodos();
-                limparCampos();
-            },
-            error: function (data) {
-                console.log("ERRO");
-            }
-        });
-    };
-
-    function inserir() {
-        $nome = $("#campo-nome").val();
-        $.ajax({
-            method: "post",
-            url: "/categoria/store",
-            data: {
-                Nome: $nome
-            },
-            success: function (data) {
-                $id = -1;
-                $("#modalCadastroCategoria").modal("hide");
-                obterTodos();
-                limparCampos();
-            },
-            error: function (data) {
-                console.log("ERRO");
-            }
-        })
-    };
-
-    function limparCampos() {
-        $("#campo-nome").val("");
-    };
-
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
         $.ajax({
-            url: '/categoria/apagar/' + $id,
+            url: '/cliente/apagar/' + $id,
             method: 'get',
             success: function (data) {
                 obterTodos();
             },
             error: function (data) {
-                console.log('Deu ruim filhão');
+                console.log('ERRO');
             }
         });
     });

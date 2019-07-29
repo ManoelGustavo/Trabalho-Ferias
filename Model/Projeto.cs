@@ -13,7 +13,16 @@ namespace Model
         public virtual ICollection<Tarefa> Tarefas { get; set; }
 
         [ForeignKey("IdCliente")]
-        public virtual Cliente Cliente { get; set; } 
+        public virtual Cliente Cliente { get; set; }
+
+        [NotMapped]
+        public string NomeCliente
+        {
+            get
+            {
+                return Cliente.Nome;
+            }
+        }
 
         [Column("id_cliente")]
         public int IdCliente { get; set; }

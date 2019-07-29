@@ -7,6 +7,7 @@
         <div class="card-body">
             <form action="@Url.Action("Update")" method="post">
                 <input type="hidden" name="id" value="@ViewBag.Cliente.Id" />
+
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-12">
@@ -19,20 +20,23 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="nome">Nome</label>
-                                <input type="text" id="nome" class="form-control" placeholder="Nome"
-                                       required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cliente.Nome" />
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" id="nome" class="form-control" placeholder="Nome"
+                                           required="required" autofocus="autofocus" name="nome" value="@ViewBag.Cliente.Nome" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="cpf">Cpf</label>
-                                <input type="text" id="cpf" class="form-control" placeholder="Cpf"
-                                       required="required" autofocus="autofocus" name="cpf" value="@ViewBag.Cliente.Cpf" />
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-cpf">Cpf</label>
+                                    <input type="text" id="campo-cpf" class="form-control" placeholder="Cpf"
+                                           required="required" autofocus="autofocus" name="cpf" value="@ViewBag.Cliente.Cpf" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -41,14 +45,14 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="data-nascimento">Data Nascimento</label>
-                                    <input type="date" id="data-nascimento" class="form-control" placeholder="Data Nascimento"
-                                           required="required" autofocus="autofocus" name="dataNascimento" value="@ViewBag.Cliente.DataNascimento.ToString("yyyy-MM-dd")" />
+                                    <input type="datetime" id="data-nascimento" class="form-control data" placeholder="Data Nascimento"
+                                           required="required" autofocus="autofocus" name="dataNascimento" value="@ViewBag.Cliente.DataNascimento.ToString("dd-MM-yyyy")" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <label for="cep">Cep</label>
-                                    <input type="text" id="cep" class="form-control" placeholder="Cep" required="required"
+                                    <label for="campo-cep">Cep</label>
+                                    <input type="text" id="campo-cep" class="form-control" placeholder="Cep" required="required"
                                            autofocus="autofocus" name="cep" value="@ViewBag.Cliente.Cep" />
                                 </div>
                             </div>
@@ -102,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
+                <button class="btn btn-success col-md-12" type="submit">Salvar</button>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="@Url.Action("Index", "Cliente")">Deseja alterar algum cliente já registrado ?</a>

@@ -45,7 +45,7 @@ WHERE id = @ID";
         public bool Apagar(int id)
         {
             SqlCommand comando = SistemaContext.AbrirConexao();
-            comando.CommandText = "DELETE cidades FROM registro_ativo = 0 WHERE id = @ID";
+            comando.CommandText = "UPDATE cidades SET registro_ativo = 0 WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
 
             int quantidade = comando.ExecuteNonQuery();
@@ -89,7 +89,7 @@ VALUES (@NOME, @NUMERO_HABITANTES, @ID_ESTADO, @DATA_CRIACAO, @REGISTRO_ATIVO)";
             DataRow row = table.Rows[0];
             Cidade cidade = new Cidade();
             cidade.Nome = row["nome"].ToString();
-            cidade.NumeroHabitantes = Convert.ToInt32(row["numero_habitantes"]);
+            cidade.NumeroHabitantes = row["numero_habitantes"].ToString();
             cidade.IdEstado = Convert.ToInt32(row["id_estado"]);
             cidade.Id = Convert.ToInt32(row["id"]);
             return cidade;

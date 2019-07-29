@@ -1,4 +1,5 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,16 @@ namespace Views.Controllers
             List<Cliente> clientes = repository.ObterTodos("");
             ViewBag.Clientes = clientes;
             return View();
+        }
+
+        public ActionResult ObterTodos(string busca)
+        {
+            List<Cliente> clientes = repository.ObterTodos(busca);
+            string jsonResult = JsonConvert.SerializeObject(clientes, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Content(jsonResult, "application/json");
         }
 
         public ActionResult Cadastro()

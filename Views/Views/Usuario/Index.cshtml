@@ -3,7 +3,7 @@
 }
 
 <h3 class="text-center">Lista de Usuarios</h3>
-<button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroUsuario"><i class="fas fa-plus"></i> Novo Usuario</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroUsuario">Novo Usuario</button>
 <div class="row">
     <div class="col-3 offset-9">
         <div class="form-group">
@@ -17,20 +17,18 @@
             <th>Código</th>
             <th>Nome</th>
             <th>Login</th>
-            <th>Senha</th>
             <th>Ação</th>
         </tr>
     </thead>
+    <tbody id="lista-usuarios"></tbody>
     <tfoot>
         <tr>
             <th>Código</th>
             <th>Nome</th>
             <th>Login</th>
-            <th>Senha</th>
             <th>Ação</th>
         </tr>
     </tfoot>
-    <tbody id="lista-usuarios"></tbody>
 </table>
 
 <div class="modal fade" id="modalCadastroUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,34 +39,21 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-nome">Nome</label>
-                            <input type="text" id="campo-nome" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="campo-login">Login</label>
-                                <input type="text" id="campo-login" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="campo-senha">Senha</label>
-                                <input type="text" id="campo-senha" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="usuario-botao-salvar"><i class="fas fa-save"></i> Salvar</button>
-                    </div>
+                <div class="form-group">
+                    <label for="campo-nome">Nome</label>
+                    <input type="text" id="campo-nome" class="form-control" />
                 </div>
+                <div class="form-group">
+                    <label for="campo-login">Login</label>
+                    <input type="text" id="campo-login" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="campo-senha">Senha</label>
+                    <input type="password" id="campo-senha" class="form-control" />
+                </div>
+                <button type="button" class="btn btn-success" id="usuario-botao-salvar">Salvar</button>
             </div>
         </div>
     </div>
+    <script src="~/Scripts/Usuario/Usuario.js"></script>
 </div>

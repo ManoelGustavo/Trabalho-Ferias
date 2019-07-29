@@ -2,24 +2,26 @@
     ViewBag.Title = "Cadastro";
 }
 
- <div class="container">
+<div class="container">
     <div class="card card-register mx-auto mt-4">
         <div class="card-header">Registro de Cliente</div>
-        <div class="card-body">            
+        <div class="card-body">
             <form action="@Url.Action("Store")" method="post">
                 <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="nome">Nome</label>
-                                <input type="text" id="nome" class="form-control" placeholder="Nome" required="required" autofocus="autofocus" name="nome" />
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" id="nome" class="form-control" placeholder="Nome" required="required" autofocus="autofocus" name="nome" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="cpf">Cpf</label>
-                                <input type="text" id="cpf" class="form-control" placeholder="Cpf"
-                                       required="required" autofocus="autofocus" name="cpf" />
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-cpf">Cpf</label>
+                                    <input type="text" id="campo-cpf" class="form-control" placeholder="Cpf"
+                                           required="required" autofocus="autofocus" name="cpf" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -28,14 +30,14 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="data-nascimento">Data Nascimento</label>
-                                    <input type="date" id="data-nascimento" class="form-control" placeholder="Data Nascimento"
+                                    <input type="datetime" id="data-nascimento" class="form-control data" placeholder="Data Nascimento"
                                            required="required" autofocus="autofocus" name="dataNascimento" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <label for="cep">Cep</label>
-                                    <input type="text" id="cep" class="form-control" placeholder="Cep"
+                                    <label for="campo-cep">Cep</label>
+                                    <input type="text" id="campo-cep" class="form-control" placeholder="Cep"
                                            required="required" autofocus="autofocus" name="cep" />
                                 </div>
                             </div>
@@ -76,14 +78,14 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="logradouro">Logradouro</label>
-                                    <input type="text" id="logradouro" class="form-control" placeholder="Logradouro" 
+                                    <input type="text" id="logradouro" class="form-control" placeholder="Logradouro"
                                            required="required" autofocus="autofocus" name="logradouro" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success col-md-12" type="submit">Registrar</button>                
+                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="@Url.Action("Index", "Cliente")">Deseja alterar algum cliente já cadastrado ?</a>

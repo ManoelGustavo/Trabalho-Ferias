@@ -8,24 +8,26 @@
         <div class="card-body">
             <form action="@Url.Action("Store")" method="post">
                 <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-cliente">Cliente</label>
-                                <select id="campo-cliente" name="idCliente" class="form-control" required="required">
-                                    <option disabled="disabled" selected="selected">Selecione um Cliente</option>
-                                    @foreach (Model.Cliente cliente in ViewBag.Clientes)
-                                    {
-                                        <option value="@cliente.Id">@cliente.Nome</option>
-                                    }
-                                </select>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-cliente">Cliente</label>
+                                    <select id="campo-cliente" name="idCliente" class="form-control" required="required">
+                                        <option disabled="disabled" selected="selected">Selecione um Cliente</option>
+                                        @foreach (Model.Cliente cliente in ViewBag.Clientes)
+                                        {
+                                            <option value="@cliente.Id">@cliente.Nome</option>
+                                        }
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-nome">Nome</label>
-                                <input type="text" id="campo-nome" class="form-control" required="required"
-                                       placeholder="Nome" autofocus="autofocus" name="nome" />
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-nome">Nome</label>
+                                    <input type="text" id="campo-nome" class="form-control" required="required"
+                                           placeholder="Nome do Projeto" autofocus="autofocus" name="nome" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -34,14 +36,14 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="campo-data-criacao">Data Criação</label>
-                                    <input type="date" id="campo-data-criacao" class="form-control" required="required"
+                                    <input type="datetime" id="campo-data-criacao" class="form-control data" placeholder="Data de Criação" required="required"
                                            autofocus="autofocus" name="dataCriacaoProjeto" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="campo-data-finalizacao">Data Finalização</label>
-                                    <input type="date" id="campo-data-finalizacao" class="form-control" required="required"
+                                    <input type="datetime" id="campo-data-finalizacao" class="form-control data" placeholder="Data de Finalização" required="required"
                                            autofocus="autofocus" name="dataFinalizacao" />
                                 </div>
                             </div>

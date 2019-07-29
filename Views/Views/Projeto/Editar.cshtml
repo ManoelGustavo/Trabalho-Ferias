@@ -21,30 +21,32 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-cliente">Cliente</label>
-                                <select id="campo-cliente" name="idCliente" class="form-control" required="required">
-                                    @foreach (Model.Cliente cliente in ViewBag.Clientes)
-                                    {
-                                        if (cliente.Id == ViewBag.Projeto.IdCliente)
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-cliente">Cliente</label>
+                                    <select id="campo-cliente" name="idCliente" class="form-control" required="required">
+                                        @foreach (Model.Cliente cliente in ViewBag.Clientes)
                                         {
-                                            <option value="@cliente.Id" selected="selected">@cliente.Nome</option>
+                                            if (cliente.Id == ViewBag.Projeto.IdCliente)
+                                            {
+                                                <option value="@cliente.Id" selected="selected">@cliente.Nome</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@cliente.Id">@cliente.Nome</option>
+                                            }
                                         }
-                                        else
-                                        {
-                                            <option value="@cliente.Id">@cliente.Nome</option>
-                                        }
-                                    }
-                                </select>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-label-group">
-                                <label for="campo-nome">Nome</label>
-                                <input type="text" id="campo-nome" class="form-control" required="required"
-                                       placeholder="Nome" autofocus="autofocus" name="nome" value="@ViewBag.Projeto.Nome" />
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="campo-nome">Nome</label>
+                                    <input type="text" id="campo-nome" class="form-control" required="required"
+                                           placeholder="Nome" autofocus="autofocus" name="nome" value="@ViewBag.Projeto.Nome" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,21 +55,21 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="campo-data-criacao">Data Criação</label>
-                                    <input type="date" id="campo-data-criacao" class="form-control" required="required"
-                                           autofocus="autofocus" name="dataCriacaoProjeto" value="@ViewBag.Projeto.DataCriacaoProjeto.ToString("yyyy-MM-dd")" />
+                                    <input type="datetime" id="campo-data-criacao" class="form-control data" required="required"
+                                           autofocus="autofocus" name="dataCriacaoProjeto" value="@ViewBag.Projeto.DataCriacaoProjeto.ToString("dd-MM-yyyy")" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <label for="campo-data-finalizacao">Data Finalização</label>
-                                    <input type="date" id="campo-data-finalizacao" class="form-control" required="required"
-                                           autofocus="autofocus" name="dataFinalizacao" value="@ViewBag.Projeto.DataFinalizacao.ToString("yyyy-MM-dd")" />
+                                    <input type="datetime" id="campo-data-finalizacao" class="form-control data" required="required"
+                                           autofocus="autofocus" name="dataFinalizacao" value="@ViewBag.Projeto.DataFinalizacao.ToString("dd-MM-yyyy")" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success col-md-12" type="submit">Registrar</button>
+                <button class="btn btn-success col-md-12" type="submit">Salvar</button>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="@Url.Action("Index", "Projeto")">Deseja alterar algum projeto já registrado ?</a>
