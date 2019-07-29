@@ -1,5 +1,4 @@
-﻿-- Desenvolvido por Matheus Donato --
-DROP TABLE IF EXISTS estados;
+﻿DROP TABLE IF EXISTS estados;
 DROP TABLE IF EXISTS cidades;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS projetos;

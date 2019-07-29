@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// Desenvolvido por Matheus Donato
+
 namespace Model
 {
     [Table("cidades")]

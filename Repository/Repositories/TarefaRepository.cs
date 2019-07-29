@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// Desenvolvido por Nathan Micael
+
 namespace Repository.Repositories
 {
     public class TarefaRepository : ITarefaRepository

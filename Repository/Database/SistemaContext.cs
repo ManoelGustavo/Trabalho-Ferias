@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.SqlClient;
-//Desenvolvido por Gustavo Manoel
 namespace Repository.DataBase
 {
     public class SistemaContext : DbContext

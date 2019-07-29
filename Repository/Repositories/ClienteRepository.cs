@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//Desenvolvido por Matheus Donato
+
 namespace Repository.Repositories
 {
     public class ClienteRepository : IClienteRepository
